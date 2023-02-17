@@ -7,12 +7,14 @@ env
 
 Binaries/Dataset-1/
 Binaries/Dataset-2/
+Binaries/Muaz-dataset/
 Binaries/Dataset-Vulnerability/
 
 IDBs/Dataset-1/
 IDBs/Dataset-2/
 IDBs/Dataset-Vulnerability/
 
+DBs/*.zip
 DBs/Dataset-1-CodeCMR/*.csv
 DBs/Dataset-1-CodeCMR/features/
 DBs/Dataset-1-CodeCMR/pairs/
@@ -25,5 +27,8 @@ DBs/Dataset-2/pairs/
 DBs/Dataset-Vulnerability/*.csv
 DBs/Dataset-Vulnerability/features/
 DBs/Dataset-Vulnerability/pairs/
+DBs/MUAZ_bins_acfg/*
+DBs/dataset1_and_MUAZ1/*
+DBs/small_dataset1_and_muaz/*
 
 Results/data/
