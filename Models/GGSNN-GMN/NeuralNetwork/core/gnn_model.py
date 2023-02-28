@@ -50,7 +50,7 @@ from .model_evaluation import *
 
 import logging
 log = logging.getLogger('gnn')
-
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 def _it_check_condition(it_num, threshold):
     """
