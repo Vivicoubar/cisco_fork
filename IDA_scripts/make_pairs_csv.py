@@ -29,7 +29,7 @@ def main(input_file, output_csv):
         data = json.load(file)
 
     csv_file = open(output_csv + "/pairs_testing_Dataset-Muaz.csv", "a")
-    csv_file.write(',idb_path_1,fva1,idb_path_2,fva2\n')
+    csv_file.write(',idb_path_1,fva_1,idb_path_2,fva_2\n')
 
     for i,bin1 in enumerate(data.keys()):
         for fun1 in data[bin1]:
