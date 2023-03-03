@@ -27,7 +27,7 @@ def add_bin_fun_to_csv(bin_path, fun_dict):
         for fva in list(fun_manager.function_addrs_set):
             unique_id = bin_path + str(fva)
             current_fun = fun_manager.function(fva)
-            fun_dict[unique_id] = [bin_path, fva, current_fun.name]
+            fun_dict[unique_id] = [path, fva, current_fun.name]
 
         return True
     except Exception as e:
