@@ -313,6 +313,7 @@ class GNNModel:
 
             df = pd.read_csv(df_input_path, index_col=0)
 
+            # It bugs here
             batch_generator = build_testing_generator(
                 self._config,
                 df_input_path)
