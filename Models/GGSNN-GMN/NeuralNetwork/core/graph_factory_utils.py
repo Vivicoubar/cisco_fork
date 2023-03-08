@@ -104,6 +104,12 @@ def pack_batch(graphs, features, use_features, nofeatures_size=1):
         n_nodes = g.number_of_nodes()
         n_edges = g.number_of_edges()
 
+        #Dirty bug fix
+        # We ignore the features where the f shape is different from the graph_idx one ?
+        boo = f.shape[0] != len(np.ones(n_nodes, dtype=np.int32) * i)
+        if boo:
+            continue
+
         # Bug fix
         #  changed from g.edges() to list(g.edges()) because
         #  there are some cases where the number of nodes == 1
