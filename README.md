@@ -1,12 +1,8 @@
 # Binary Function Similarity
-This repository contains the code, the dataset and additional technical information for our USENIX Security '22 paper:
+This repo is a fork of the repository that contains the code, the dataset and additional technical information for the USENIX Security '22 paper:
 > Andrea Marcelli, Mariano Graziano, Xabier Ugarte-Pedrero, Yanick Fratantonio, Mohamad Mansouri, Davide Balzarotti. *How Machine Learning Is Solving the Binary Function Similarity Problem*. USENIX Security '22.
 
 The paper is available at this [link](https://www.usenix.org/system/files/sec22-marcelli.pdf).
-
-
-## Additional technical information
-The technical report, with additional information on the dataset and the selected approaches, is available at this [link](Additional technical information.pdf).
 
 
 ## Artifacts
@@ -17,7 +13,7 @@ The repository is structured in the following way:
 * [DBs](DBs/): the datasets of selected functions, the corresponding features, and the scripts to generate them
 * [IDA_scripts](IDA_scripts/): the IDA Pro scripts used for the features extraction
 * [Models](Models/): the code for the approaches we tested
-* [Results](Results/): the results of our experiments on all the test cases and the code to extract the different metrics.
+* [Results](Results/): the results of the experiments on all the test cases and the code to extract the different metrics.
 
 
 ## What to do next?
@@ -30,7 +26,7 @@ The following is a list of the main steps to follow based on the most common use
 	2. Refer to the README of each approach in the [Models](Models/) folder for detailed instructions on how to run it
 	3. Follow the README and use the scripts in the [Results](Results/) folder to collect the different metrics.
 
-* **Test a new approach on our datasets**
+* **Test a new approach on the datasets**
 	1. Check the README in the [DBs](DBs/) folder to decide which data to use based on each test case
 	2. Reuse the existing [IDA Pro scripts](IDA_scripts/) codebase for the features extractions and pre/post-processing code to minimize evaluation differences
 	3. Follow the README and use the scripts in the [Results](Results/) folder to collect the different metrics.
@@ -44,23 +40,6 @@ The following is a list of the main steps to follow based on the most common use
 	3. Some approaches require to run a specific post-processing script to convert the extracted features into the requested format
 	4. *Be aware* of the limitations of the ML models: new architectures, compilers and compiler options may require retraining them.
 
-
-## How to cite our work
-Please use the following BibTeX:
-```
-@inproceedings {280046,
-author = {Andrea Marcelli and Mariano Graziano and Xabier Ugarte-Pedrero and Yanick Fratantonio and Mohamad Mansouri and Davide Balzarotti},
-title = {How Machine Learning Is Solving the Binary Function Similarity Problem},
-booktitle = {31st USENIX Security Symposium (USENIX Security 22)},
-year = {2022},
-isbn = {978-1-939133-31-1},
-address = {Boston, MA},
-pages = {2099--2116},
-url = {https://www.usenix.org/conference/usenixsecurity22/presentation/marcelli},
-publisher = {USENIX Association},
-month = aug,
-}
-```
 
 ## License
 The code in this repository is licensed under the [MIT License](LICENSE), however some models and scripts depend on or pull in code that have different licenses.
