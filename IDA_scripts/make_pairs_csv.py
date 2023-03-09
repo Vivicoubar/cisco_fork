@@ -37,7 +37,7 @@ def add_bin_fun_to_csv(bin_path, fun_dict):
 
 @click.command()
 @click.option('-i', '--input-folder', required=True,
-              help='Input json file')
+              help='Input binaries folder')
 @click.option('-o', '--output-folder', required=True,
               help='Output csv folder.')
 def main(input_folder, output_folder):
