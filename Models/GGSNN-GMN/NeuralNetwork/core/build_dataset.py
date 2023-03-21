@@ -114,6 +114,9 @@ def fill_feed_dict(placeholders, batch):
         placeholders['from_idx']: graphs.from_idx,
         placeholders['to_idx']: graphs.to_idx,
         placeholders['graph_idx']: graphs.graph_idx,
+        #from_idx: [n_edges] int tensor, from node indices for each edge.
+        #to_idx: [n_edges] int tensor, to node indices for each edge.
+        #graph_idx: [n_onodes] int tensor, graph id for each node.
     }
 
     # Set the labels only if provided in the input batch data.

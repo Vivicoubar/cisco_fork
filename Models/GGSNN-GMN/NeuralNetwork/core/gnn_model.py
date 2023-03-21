@@ -50,7 +50,8 @@ from .model_evaluation import *
 
 import logging
 log = logging.getLogger('gnn')
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 def _it_check_condition(it_num, threshold):
     """
@@ -154,6 +155,7 @@ class GNNModel:
     def _restore_model(self):
         """Restore the model from the latest checkpoint"""
         checkpoint_dir = self._config['checkpoint_dir']
+        log.info("Config checkpoint_dir: {}".format(checkpoint_dir))
         latest_checkpoint = tf.train.latest_checkpoint(checkpoint_dir)
         log.info("Loading trained model from: {}".format(latest_checkpoint))
         self._tf_saver.restore(self._session, latest_checkpoint)
@@ -300,10 +302,14 @@ class GNNModel:
         # Model initialization
         training_set, validation_set = \
             build_train_validation_generators(self._config)
+        
+        # Session is initialized here
         self._model_initialize(training_set)
 
         # Model restoring
+        ## Saver is init here
         self._create_tfsaver()
+        # saver.restore(session, checkpoint) is here
         self._restore_model()
 
         # Evaluate the full testing dataset
@@ -313,16 +319,17 @@ class GNNModel:
 
             df = pd.read_csv(df_input_path, index_col=0)
 
-            # It bugs here
             batch_generator = build_testing_generator(
                 self._config,
                 df_input_path)
+
 
             similarity_list = evaluate_sim(
                 self._session,
                 self._tensors['metrics']['evaluation'],
                 self._placeholders,
                 batch_generator)
+
 
             # Save the cosine similarity
             df['sim'] = similarity_list[:df.shape[0]]

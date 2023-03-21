@@ -98,15 +98,17 @@ def pack_batch(graphs, features, use_features, nofeatures_size=1):
 
     n_total_nodes = 0
     n_total_edges = 0
+    log.debug("LETS GO")
     for i, d in enumerate(zip(graphs, features)):
         g, f = d[0], d[1]
 
         n_nodes = g.number_of_nodes()
         n_edges = g.number_of_edges()
 
-        #Dirty bug fix
-        # We ignore the features where the f shape is different from the graph_idx one ?
         boo = f.shape[0] != len(np.ones(n_nodes, dtype=np.int32) * i)
+
+        #Bug fix try
+        # We ignore the features where the f shape is different from the graph_idx one ?
         if boo:
             continue
 
@@ -118,7 +120,23 @@ def pack_batch(graphs, features, use_features, nofeatures_size=1):
         # shift the node indices for the edges
         from_idx.append(edges[:, 0] + n_total_nodes)
         to_idx.append(edges[:, 1] + n_total_nodes)
+        #log.debug("node_features added: {}".format(f.shape))
         node_features.append(f)
+        #log.debug("graph_idx added: {}".format(np.ones(n_nodes, dtype=np.int32) * i))
+        #log.debug("graph_idx added len: {}".format(len(np.ones(n_nodes, dtype=np.int32) * i)))
+
+        log.debug("Is f square / identity: {}/{}".format(f.shape[0] == f.shape[1] , f == np.eye(f.shape[0])))
+        if(boo):
+            log.debug("FOUND ONE: {} \n {} \n{}".format(i, f, np.ones(n_nodes, dtype=np.int32) * i))
+            log.debug("Difference is: {} ({} - {})".format(f.shape[0] - len(np.ones(n_nodes, dtype=np.int32) * i), f.shape[0], len(np.ones(n_nodes, dtype=np.int32) * i)))
+            log.debug(" n_nodes,n_edges: {} {}".format(n_nodes, n_edges))
+            log.debug("----------------------")
+        #elif(i%18==0):
+        #    log.debug("Testing some REGULAR: {} \n {} \n{}".format(i, f, np.ones(n_nodes, dtype=np.int32) * i))
+        #    log.debug("Difference is: {}".format(f.shape[0] - len(np.ones(n_nodes, dtype=np.int32) * i)))
+        #    log.debug(" n_nodes,n_edges: {} {}".format(n_nodes, n_edges))
+        #    log.debug("----------------------")
+
         graph_idx.append(np.ones(n_nodes, dtype=np.int32) * i)
 
         n_total_nodes += n_nodes
@@ -132,6 +150,8 @@ def pack_batch(graphs, features, use_features, nofeatures_size=1):
         node_features = np.ones(
             (n_total_nodes, nofeatures_size),
             dtype=np.float32)
+
+    log.debug("DEBUG IMPORTANT:len of graph_idx :{}, concatenated graph_idx: {} n_nodes : {},\n n_tot_nodes: {}, node_features: {}\n i : {}".format(len(graph_idx),len(np.concatenate(graph_idx, axis=0)), n_nodes, n_total_nodes, node_features.shape, i))
 
     return GraphData(
         # from_idx: [n_edges] int tensor, index of the from node for each

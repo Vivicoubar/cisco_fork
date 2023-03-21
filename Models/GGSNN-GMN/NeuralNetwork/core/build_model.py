@@ -118,7 +118,7 @@ def build_placeholders(node_feature_dim, edge_feature_dim):
 
         'to_idx': tf.compat.v1.placeholder(
             tf.int32, [None]),
-
+        # THIS ONE IS THE PB, its size is not the same as 'node_features'.size()[0] !
         'graph_idx': tf.compat.v1.placeholder(
             tf.int32, [None]),
 

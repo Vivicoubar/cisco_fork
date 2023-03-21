@@ -88,7 +88,9 @@ class GraphFactoryTesting(GraphFactoryBase):
             self._fdict = json.load(gfd_in)
 
         # Initialize the iterator
+        log.info("About to get_next_pair")
         self._get_next_pair_it = self._get_next_pair()
+        log.info("get_next_pair successful")
 
         # Number of positive or negative function pairs
         self._num_func_pairs = min(self._func_pos.shape[0],
@@ -124,6 +126,7 @@ class GraphFactoryTesting(GraphFactoryBase):
         """The function implements an infinite loop over the input data."""
         while True:
             log.info("(Re-)initializing the iterators")
+            log.info("DEBUG")
             # (Re-)initialize the iterators
             iterator_pos = self._func_pos.iterrows()
             iterator_neg = self._func_neg.iterrows()

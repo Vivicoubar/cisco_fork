@@ -73,14 +73,21 @@ class GraphFactoryInference(GraphFactoryBase):
         self._bb_features_size = bb_features_size
         self._decoder = str_to_scipy_sparse
 
-        # Load function pairs
+        # Load function pairs into _func
         log.debug("Reading {}".format(func_path))
         self._func = pd.read_csv(func_path)
 
-        # Load function features
+        # Load function features into _fdict
         log.debug("Loading {}".format(feat_path))
         with open(feat_path) as gfd_in:
             self._fdict = json.load(gfd_in)
+        
+        num_feat_fun=0
+        for value in self._fdict.values():
+            for fun in value:
+                num_feat_fun += 1
+
+        log.info("Num func in the features file: {}".format(num_feat_fun))
 
         # Initialize the iterator
         self._get_next_pair_it = self._get_next_pair()

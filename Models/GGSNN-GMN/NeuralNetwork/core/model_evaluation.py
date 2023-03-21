@@ -180,14 +180,48 @@ def evaluate_sim(sess, eval_metrics, placeholders, batch_generator):
     Returns:
       metrics: a dict of metric name => value mapping.
     """
-    similarity_list = list()
+    log.debug("enter evaluate_sim")
+    log.debug("eval_metrics info:\n 'keys': {}".format(str(eval_metrics.keys())))
+    log.debug("eval_metrics info:\n 'pair_similarity': {}".format(str(eval_metrics['pair_similarity'])))
+    log.debug("eval_metrics info:\n 'pair_similarity': {}".format(type(eval_metrics['pair_similarity'])))
+    log.debug("eval_metrics info:\n 'pair_auc': {}".format(str(eval_metrics['pair_auc'])))
 
+    similarity_list = list()
+    i=0
     for batch in batch_generator.pairs():
+        log.debug("batch nbr{}".format(i))
+        i+=1
 
         feed_dict = fill_feed_dict(placeholders, batch)
+
+        iterator = iter(feed_dict.values())
+        log.debug("feed_dict info:\n 'keys': {}".format(str(feed_dict.keys())))
+        item1 = next(iterator)
+        log.debug("feed_dict info:\n 'Placeholder:0': {}".format(str(item1)))
+        log.debug("feed_dict info:\n 'Placeholder:0' shape: {}".format(str( item1.shape )))
+
+        item2 = next(iterator)
+        log.debug("feed_dict info:\n 'Placeholder:1': {}".format(str(item2)))
+        log.debug("feed_dict info:\n 'Placeholder:1' shape: {}".format(str( item2.shape )))
+
+        item3 = next(iterator)
+        log.debug("feed_dict info:\n 'Placeholder:2': {}".format(str(item3)))
+        log.debug("feed_dict info:\n 'Placeholder:2' shape: {}".format(str( item3.shape )))
+
+
+        item4 = next(iterator)
+        log.debug("feed_dict info:\n 'Placeholder:3': {}".format(str(item4)))
+        log.debug("feed_dict info:\n 'Placeholder:3' shape: {}".format(str( item4.shape )))
+
+        item5 = next(iterator)
+        log.debug("feed_dict info:\n 'Placeholder:4': {}".format(str(item5)))
+        log.debug("feed_dict info:\n 'Placeholder:4' shape: {}".format(str( item5.shape )))
+
         similarity, = sess.run(
             [eval_metrics['pair_similarity']],
             feed_dict=feed_dict)
+        log.debug("ran sess.run")
         similarity_list.extend(similarity)
+        log.debug("extended similarity list")
 
     return np.array(similarity_list)
