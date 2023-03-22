@@ -29,7 +29,7 @@ echo "Running make_pairs_csv"
 python3 IDA_scripts/make_pairs_csv.py -i Binaries/Dataset-Muaz/ -o DBs/Dataset-Muaz/pairs/
 
 #--- Preprocessing the data
-cd Models/GGSNN/
+cd Models/GGSNN-GMN/
 ### this uses the training dataset' preprocessed opcode_dict
 echo "Running docker to preprocess test data"
 docker run --rm \
@@ -41,12 +41,28 @@ docker run --rm \
 #--- Inference with the model (needs the trained model checkpoint, the training dataset data)
 
 echo "Running docker to infer test data"
-docker run --rm \
-    -v $(pwd)/../../DBs:/input \
-    -v $(pwd)/NeuralNetwork/:/output \
-    -v $(pwd)/Preprocessing:/preprocessing \
-    -it gnn-neuralnetwork /code/gnn.py --test \
-        --model_type embedding --training_mode pair \
-        --features_type opc --dataset Dataset-Muaz  \
-        -c /code/model_checkpoint_GGSNN_pair \
-        -o /output/Dataset-Muaz
+if [[ "$1" == "GNN" ]]; then
+	docker run --rm \
+	    -v $(pwd)/../../DBs:/input \
+	    -v $(pwd)/NeuralNetwork/:/output \
+	    -v $(pwd)/Preprocessing:/preprocessing \
+	    -it gnn-neuralnetwork /code/gnn.py --test \
+		--model_type embedding --training_mode pair \
+		--features_type opc --dataset muaz  \
+		-c /code/model_checkpoint_GGSNN_pair \
+		-o /output/Dataset-Muaz
+
+elif [[ "$1" == "GMN" ]]; then
+	docker run --rm \
+	    -v $(pwd)/../../DBs:/input \
+	    -v $(pwd)/NeuralNetwork/:/output \
+	    -v $(pwd)/Preprocessing:/preprocessing \
+	    -it gnn-neuralnetwork /code/gnn.py --test \
+		--model_type matching --training_mode pair \
+		--features_type opc --dataset muaz  \
+		-c /code/model_checkpoint_GMN_pair \
+		-o /output/Dataset-Muaz
+
+else
+	echo "Error: inference mode not GMN or GNN"
+fi
