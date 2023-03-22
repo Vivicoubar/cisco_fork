@@ -6,5 +6,5 @@ docker run --rm \
 		--model_type embedding --training_mode pair \
 		--features_type opc --dataset muaz \
 		-c /output/model_checkpoint_2023-02-21 \
-		-o /output/Dataset-2_afer_modif
+		-o /output/Dataset-Muaz
 

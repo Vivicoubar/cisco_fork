@@ -234,7 +234,7 @@ def run_acfg_disasm(bin_path, output_csv, json_path, log_path):
             print("[!] Exception: skipping function fva: %d" % fva)
             print(e)
 
-    out_name = ntpath.basename(bin_path) + "_acfg_disasm"
+    out_name = ntpath.basename(bin_path) + "_acfg_disasm.json"
     print("Saving data in file {}".format(os.path.join(output_csv, out_name)))
     with open(os.path.join(output_csv, out_name), "w") as f_out:
         json.dump(output_dict, f_out)
