@@ -15,20 +15,23 @@
 ## Now that you have everything setup let's prepare your binaries, preprocess the data with the trained model using the training dataset opcode_dict, and finally test the model on your dataset.
 
 #--- Preparing the data
-cd IDA_scripts/
+echo "Preparing the data"
 #### create the json file containing all the fun's ep, needed by cli_acfg_disasm
+echo "Running create_json_for_ACFG_plugin"
 python3 IDA_scripts/create_json_for_ACFG_plugin.py -i Binaries/Dataset-Muaz/ -o DBs/Dataset-Muaz/features/Dataset-Muaz.json
 
 #### extract the features used by the model (acfg disasm)
+echo "Running cli_acfg_disasm"
 python3 IDA_scripts/ANGR_acfg_disasm/cli_acfg_disasm.py -j DBs/Dataset-Muaz/features/Dataset-Muaz.json -o DBs/Dataset-Muaz/features/acfg_disasm/
 
 #### make the pairs
+echo "Running make_pairs_csv"
 python3 IDA_scripts/make_pairs_csv.py -i Binaries/Dataset-Muaz/ -o DBs/Dataset-Muaz/pairs/
 
 #--- Preprocessing the data
-cd ../
 cd Models/GGSNN/
 ### this uses the training dataset' preprocessed opcode_dict
+echo "Running docker to preprocess test data"
 docker run --rm \
     -v $(pwd)/../../DBs/Dataset-Muaz/features/acfg_disasm:/input \
     -v $(pwd)/Preprocessing/Dataset-1_training:/training_data \
@@ -37,6 +40,7 @@ docker run --rm \
 
 #--- Inference with the model (needs the trained model checkpoint, the training dataset data)
 
+echo "Running docker to infer test data"
 docker run --rm \
     -v $(pwd)/../../DBs:/input \
     -v $(pwd)/NeuralNetwork/:/output \
