@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ## Prep: put your bins in the "Binaries/Dataset-Muaz/" folder
 ## Prepare the DBs/Dataset-Muaz/ folder like this:
 ## Dataset-Muaz/

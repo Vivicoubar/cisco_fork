@@ -1,0 +1,21 @@
+Model: GNN (also named GGSNN)
+Training dataset: "Dataset-1_training" from SOK paper
+Validation dataset: "Dataset-1_validation" from SOK paper
+- NOTE: in the SOK paper, they remove the function with < 5 basic blocks from their datasets
+--- The following options are identical to the ones used in the SOK paper so that we can comapre our results to theirs
+Training mode: pairs
+Feature type: opc
+Num epochs: 10
+--- Testing part
+Test dataset #1: "Dataset-1_testing" from SOK paper (mix of randomly selected positive and negative pairs)
+Test dataset #2: "Dataset-2_testing" from SOK paper (mix of randomly selected positive and negative pairs)
+Test dataset #3: "Dataset-Muaz" from Muaz (selected binaries with and without obfuscated functions). NOTE: they are small !
+
+--- Experiments
+We trained the GNN model on "Dataset-1_training", validated it on "Dataset-A_validation".
+We tested the model on "Dataset-1_testing" and "Dataset-Muaz_testing". The performance results (AUC) were the same as in the SOK paper on their selected test pairs.
+We tested the model on "Dataset-Muaz". Results are this time contradictory. We suspect we should:
+-> Include Muaz's (non-obfuscated) functions in the training dataset
+-> Use bigger-sized functions, as "Dataset-1_training" was pruned of its small sized functions.
+
+We also believe that we should verify that our home-made preprocessing plugin work correctly. This could be done by training GNN on "Dataset-1_training" preprocessed by OUR scripts, and not the SOK paper's author's, and then testing it on "Dataset-1_testing".
