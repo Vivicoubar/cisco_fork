@@ -1,0 +1,77 @@
+[32m2023-03-22 16:31:13[0m [1;30mINFO::[0m Running model testing
+[32m2023-03-22 16:31:13[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m About to get_next_pair
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m get_next_pair successful
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m Tot num func pairs (validation): 80000
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m Num batches (validation): 4000
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m Re-initializing the pair generation
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m node_feature_dim: 200
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m edge_feature_dim: 1
+[32m2023-03-22 16:31:15[0m [1;30mINFO::[0m Building embedding model
+[32m2023-03-22 16:31:18[0m [1;30mINFO::[0m Config checkpoint_dir: /output/model_checkpoint_2023-02-21
+[32m2023-03-22 16:31:18[0m [1;30mINFO::[0m Loading trained model from: /output/model_checkpoint_2023-02-21/graph-embedding-pair-40000
+[32m2023-03-22 16:31:19[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-03-22 16:34:10[0m [1;30mINFO::[0m Running model testing
+[32m2023-03-22 16:34:10[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m About to get_next_pair
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m get_next_pair successful
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m Tot num func pairs (validation): 80000
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m Num batches (validation): 4000
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m Re-initializing the pair generation
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m node_feature_dim: 200
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m edge_feature_dim: 1
+[32m2023-03-22 16:34:12[0m [1;30mINFO::[0m Building embedding model
+[32m2023-03-22 16:34:15[0m [1;30mINFO::[0m Config checkpoint_dir: /output/model_checkpoint_2023-02-21
+[32m2023-03-22 16:34:15[0m [1;30mINFO::[0m Loading trained model from: /output/model_checkpoint_2023-02-21/graph-embedding-pair-40000
+[32m2023-03-22 16:34:15[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-03-22 16:34:16[0m [1;30mINFO::[0m Num func in the features file: 72977
+[32m2023-03-22 16:34:16[0m [1;30mINFO::[0m Num func pairs (inference): 60000
+[32m2023-03-22 16:34:16[0m [1;30mINFO::[0m Num batches (inference): 3000
+[32m2023-03-22 16:34:16[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-03-22 16:36:38[0m [1;30mINFO::[0m Result CSV saved to /output/Dataset-two/neg_rank_testing_Dataset-2_sim.csv
+[32m2023-03-22 16:36:38[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-03-22 16:36:39[0m [1;30mINFO::[0m Num func in the features file: 72977
+[32m2023-03-22 16:36:39[0m [1;30mINFO::[0m Num func pairs (inference): 150000
+[32m2023-03-22 16:36:39[0m [1;30mINFO::[0m Num batches (inference): 7500
+[32m2023-03-22 16:36:39[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-03-22 16:41:52[0m [1;30mINFO::[0m Result CSV saved to /output/Dataset-two/neg_testing_Dataset-2_sim.csv
+[32m2023-03-22 16:41:52[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-03-22 16:41:52[0m [1;30mINFO::[0m Num func in the features file: 72977
+[32m2023-03-22 16:41:52[0m [1;30mINFO::[0m Num func pairs (inference): 600
+[32m2023-03-22 16:41:52[0m [1;30mINFO::[0m Num batches (inference): 30
+[32m2023-03-22 16:41:52[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-03-22 16:41:54[0m [1;30mINFO::[0m Result CSV saved to /output/Dataset-two/pos_rank_testing_Dataset-2_sim.csv
+[32m2023-03-22 16:41:54[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-03-22 16:41:54[0m [1;30mINFO::[0m Num func in the features file: 72977
+[32m2023-03-22 16:41:54[0m [1;30mINFO::[0m Num func pairs (inference): 150000
+[32m2023-03-22 16:41:54[0m [1;30mINFO::[0m Num batches (inference): 7500
+[32m2023-03-22 16:41:54[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-03-22 16:43:46[0m [1;30mINFO::[0m Running model testing
+[32m2023-03-22 16:43:46[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m About to get_next_pair
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m get_next_pair successful
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m Tot num func pairs (validation): 80000
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m Num batches (validation): 4000
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m Re-initializing the pair generation
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m node_feature_dim: 200
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m edge_feature_dim: 1
+[32m2023-03-22 16:43:48[0m [1;30mINFO::[0m Building embedding model
+[32m2023-03-22 16:43:52[0m [1;30mINFO::[0m Config checkpoint_dir: /output/model_checkpoint_2023-02-21
+[32m2023-03-22 16:43:52[0m [1;30mINFO::[0m Loading trained model from: /output/model_checkpoint_2023-02-21/graph-embedding-pair-40000
+[32m2023-03-22 16:43:52[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-03-22 16:43:53[0m [1;30mINFO::[0m Num func in the features file: 283
+[32m2023-03-22 16:43:53[0m [1;30mINFO::[0m Num func pairs (inference): 320360
+[32m2023-03-22 16:43:53[0m [1;30mINFO::[0m Num batches (inference): 16018
+[32m2023-03-22 16:43:53[0m [1;30mINFO::[0m (Re-)initializing the iterators

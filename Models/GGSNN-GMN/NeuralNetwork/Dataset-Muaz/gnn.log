@@ -1,0 +1,123 @@
+[32m2023-03-22 15:47:56[0m [1;30mINFO::[0m Running model testing
+[32m2023-03-22 15:47:56[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-03-22 15:47:58[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-03-22 15:47:58[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-03-22 15:47:58[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-03-22 15:47:58[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-03-22 15:52:51[0m [1;30mINFO::[0m Running model testing
+[32m2023-03-22 15:52:51[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-03-22 16:03:22[0m [1;30mINFO::[0m Running model testing
+[32m2023-03-22 16:03:22[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-03-22 16:03:24[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-03-22 16:03:24[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-03-22 16:03:24[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-03-22 16:03:24[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-03-22 16:05:45[0m [1;30mINFO::[0m Running model testing
+[32m2023-03-22 16:05:45[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m About to get_next_pair
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m get_next_pair successful
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m Tot num func pairs (validation): 80000
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m Num batches (validation): 4000
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m Re-initializing the pair generation
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m node_feature_dim: 200
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m edge_feature_dim: 1
+[32m2023-03-22 16:05:47[0m [1;30mINFO::[0m Building embedding model
+[32m2023-03-22 16:05:51[0m [1;30mINFO::[0m Config checkpoint_dir: /code/model_checkpoint_GGSNN_pair
+[32m2023-03-22 16:05:51[0m [1;30mINFO::[0m Loading trained model from: /output/model_checkpoint_GGSNN_pair/graph-embedding-pair-40000
+[32m2023-03-22 16:05:51[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-03-22 16:05:51[0m [1;30mINFO::[0m Num func in the features file: 283
+[32m2023-03-22 16:05:51[0m [1;30mINFO::[0m Num func pairs (inference): 240269
+[32m2023-03-22 16:05:51[0m [1;30mINFO::[0m Num batches (inference): 12014
+[32m2023-03-22 16:05:51[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-03-22 16:13:30[0m [1;30mINFO::[0m Running model testing
+[32m2023-03-22 16:13:30[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m About to get_next_pair
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m get_next_pair successful
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m Tot num func pairs (validation): 80000
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m Num batches (validation): 4000
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m Re-initializing the pair generation
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m node_feature_dim: 200
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m edge_feature_dim: 1
+[32m2023-03-22 16:13:32[0m [1;30mINFO::[0m Building embedding model
+[32m2023-03-22 16:13:36[0m [1;30mINFO::[0m Config checkpoint_dir: /code/model_checkpoint_GGSNN_pair
+[32m2023-03-22 16:13:36[0m [1;30mINFO::[0m Loading trained model from: /output/model_checkpoint_GGSNN_pair/graph-embedding-pair-40000
+[32m2023-03-22 16:13:36[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-03-22 16:13:37[0m [1;30mINFO::[0m Num func in the features file: 283
+[32m2023-03-22 16:13:37[0m [1;30mINFO::[0m Num func pairs (inference): 320360
+[32m2023-03-22 16:13:37[0m [1;30mINFO::[0m Num batches (inference): 16018
+[32m2023-03-22 16:13:37[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-03-22 16:16:38[0m [1;30mINFO::[0m Running model testing
+[32m2023-03-22 16:16:38[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m About to get_next_pair
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m get_next_pair successful
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m Tot num func pairs (validation): 80000
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m Num batches (validation): 4000
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m Re-initializing the pair generation
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m node_feature_dim: 200
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m edge_feature_dim: 1
+[32m2023-03-22 16:16:40[0m [1;30mINFO::[0m Building embedding model
+[32m2023-03-22 16:16:43[0m [1;30mINFO::[0m Config checkpoint_dir: /output/model_checkpoint_2023-02-21
+[32m2023-03-22 16:16:43[0m [1;30mINFO::[0m Loading trained model from: /output/model_checkpoint_2023-02-21/graph-embedding-pair-40000
+[32m2023-03-22 16:16:44[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-03-22 16:16:44[0m [1;30mINFO::[0m Num func in the features file: 283
+[32m2023-03-22 16:16:44[0m [1;30mINFO::[0m Num func pairs (inference): 320360
+[32m2023-03-22 16:16:44[0m [1;30mINFO::[0m Num batches (inference): 16018
+[32m2023-03-22 16:16:44[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-05-01 11:48:15[0m [1;30mINFO::[0m Running model testing
+[32m2023-05-01 11:48:15[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m About to get_next_pair
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m get_next_pair successful
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m Tot num func pairs (validation): 80000
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m Num batches (validation): 4000
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m Re-initializing the pair generation
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m node_feature_dim: 200
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m edge_feature_dim: 1
+[32m2023-05-01 11:48:17[0m [1;30mINFO::[0m Building embedding model
+[32m2023-05-01 11:48:21[0m [1;30mINFO::[0m Config checkpoint_dir: /output/model_checkpoint_2023-02-21
+[32m2023-05-01 11:48:21[0m [1;30mINFO::[0m Loading trained model from: /output/model_checkpoint_2023-02-21/graph-embedding-pair-40000
+[32m2023-05-01 11:48:21[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-05-01 11:48:21[0m [1;30mINFO::[0m Num func in the features file: 18
+[32m2023-05-01 11:48:21[0m [1;30mINFO::[0m Num func pairs (inference): 324
+[32m2023-05-01 11:48:21[0m [1;30mINFO::[0m Num batches (inference): 17
+[32m2023-05-01 11:48:21[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-05-01 11:48:21[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-05-01 11:48:21[0m [1;30mINFO::[0m Result CSV saved to /output/Dataset-Muaz/pairs_testing_Dataset-Muaz.csv
+[32m2023-05-01 19:35:43[0m [1;30mINFO::[0m Running model testing
+[32m2023-05-01 19:35:43[0m [1;30mINFO::[0m Batch size (training): 20
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m Tot num func pairs (training): 80000
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m Num batches in epoch (training): 4000
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m Tot num func pairs per epoch (training): 80000
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m Batch size (validation): 20
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m About to get_next_pair
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m get_next_pair successful
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m Tot num func pairs (validation): 80000
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m Num batches (validation): 4000
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m Re-initializing the pair generation
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m node_feature_dim: 200
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m edge_feature_dim: 1
+[32m2023-05-01 19:35:45[0m [1;30mINFO::[0m Building embedding model
+[32m2023-05-01 19:35:49[0m [1;30mINFO::[0m Config checkpoint_dir: /output/model_checkpoint_2023-02-21
+[32m2023-05-01 19:35:49[0m [1;30mINFO::[0m Loading trained model from: /output/model_checkpoint_2023-02-21/graph-embedding-pair-40000
+[32m2023-05-01 19:35:49[0m [1;30mINFO::[0m Batch size (inference): 20
+[32m2023-05-01 19:35:49[0m [1;30mINFO::[0m Num func in the features file: 18
+[32m2023-05-01 19:35:49[0m [1;30mINFO::[0m Num func pairs (inference): 36
+[32m2023-05-01 19:35:49[0m [1;30mINFO::[0m Num batches (inference): 2
+[32m2023-05-01 19:35:49[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-05-01 19:35:49[0m [1;30mINFO::[0m (Re-)initializing the iterators
+[32m2023-05-01 19:35:49[0m [1;30mINFO::[0m Result CSV saved to /output/Dataset-Muaz/pairs_testing_Dataset-Muaz.csv

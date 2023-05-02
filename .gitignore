@@ -28,4 +28,8 @@ DBs/MUAZ_bins_acfg/*
 DBs/dataset1_and_MUAZ1/*
 DBs/small_dataset1_and_muaz/*
 
+IDA_scripts/**/*_log.txt
+
+Models/GGSNN-GMN/**/**dict_opc_*
+
 Results/data/

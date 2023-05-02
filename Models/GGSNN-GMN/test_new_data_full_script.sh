@@ -35,7 +35,7 @@ python3 IDA_scripts/ANGR_acfg_disasm/cli_acfg_disasm.py -j DBs/your_dataset/feat
 #### pairs
 python3 IDA_scripts/make_pairs_csv.py -i Binaries/your_dataset/ -o DBs/your_dataset/pairs/
 
-### Preprocess your_dataset data (needs the training set preprocessed data)
+### Preprocess your_dataset data (needs the training set preprocessed data - this means the ACFG-disas folder files)
 cd Models/GGSNN/ &&\
 docker run --rm \
     -v $(pwd)/../../DBs/your_dataset/features/acfg_disasm:/input \
