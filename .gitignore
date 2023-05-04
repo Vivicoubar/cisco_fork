@@ -5,15 +5,25 @@
 
 env
 
+Models/GGSNN-GMN/Preprocessing/Dataset*
+Models/GGSNN-GMN/NeuralNetwork/Dataset*
+cisco_env
+
+Binaries/Dataset*
 Binaries/Dataset-1/
 Binaries/Dataset-2/
 Binaries/Muaz-dataset/
 Binaries/Dataset-Vulnerability/
+Binaries/coreutils*
+Binaries/*dataset*
 
 IDBs/Dataset-1/
 IDBs/Dataset-2/
 IDBs/Dataset-Vulnerability/
+IDBs/Dataset*
 
+DBs
+DBs/**/*
 DBs/*.zip
 DBs/Dataset-1-CodeCMR/*.csv
 DBs/Dataset-1-CodeCMR/features/
@@ -31,5 +41,7 @@ DBs/small_dataset1_and_muaz/*
 IDA_scripts/**/*_log.txt
 
 Models/GGSNN-GMN/**/**dict_opc_*
+Models/Asm2vec/*Dataset*
 
 Results/data/
+Results/my_exp_data
