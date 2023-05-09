@@ -39,6 +39,8 @@ DBs/dataset1_and_MUAZ1/*
 DBs/small_dataset1_and_muaz/*
 
 IDA_scripts/**/*_log.txt
+IDA_scripts/**/*.nbconvert.*
+IDA_scripts/generate_idbs.py
 
 Models/GGSNN-GMN/**/**dict_opc_*
 Models/Asm2vec/*Dataset*

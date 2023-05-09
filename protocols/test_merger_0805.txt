@@ -1,0 +1,18 @@
+Models tested:
+- GNNsNN
+- GMN
+
+Test dataset: (f, f', g), f source, g target, f' obfuscated
+Dataset Muaz:
+{list of dataset Muaz binaries, and their functions}
+
+Training datasets:
+
+1) Dataset 1 (as in the paper)
+2) Dataset 1 + original functions from Dataset Muaz
+
+Results:
+{score results}
+
+Analysis:
+Interesting part
