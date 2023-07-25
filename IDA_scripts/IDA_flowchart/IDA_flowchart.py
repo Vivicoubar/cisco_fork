@@ -155,7 +155,7 @@ def analyze_functions(idb_path, output_csv):
             bb_sa_list = list(idaapi.FlowChart(func))
 
             # SKIP all the functions with less than 5 BBs.
-            if len(bb_sa_list) < 1:
+            if len(bb_sa_list) < 5:
                 continue
 
             data = [idb_path,

@@ -5,6 +5,6 @@ docker run --rm \
 	-it gnn-neuralnetwork /code/gnn.py --test \
 		--model_type embedding --training_mode pair \
 		--features_type opc --dataset muaz \
-		-c /output/model_checkpoint_2023-02-21 \
+		-c /output/model_checkpoint_2023-05-16 \
 		-o /output/Dataset-Muaz
 
