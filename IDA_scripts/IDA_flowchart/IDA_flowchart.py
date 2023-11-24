@@ -156,6 +156,7 @@ def analyze_functions(idb_path, output_csv):
 
             # SKIP all the functions with less than 5 BBs.
             if len(bb_sa_list) < 5:
+                print("Function {} is too small ({})!".format(func_name, len(bb_sa_list)))
                 continue
 
             data = [idb_path,

@@ -19,8 +19,6 @@ from tqdm import tqdm
 flowchart = pd.read_csv("~/cisco_fork/DBs/Dataset-Muaz/features/flowchart_Dataset-Muaz.csv")
 print(flowchart.shape)
 
-flowchart.loc[flowchart['func_name'] == 'getMatrixElements']
-
 # **Functions of interest**
 
 #fun_of_interest = list(flowchart['func_name'])
@@ -37,6 +35,7 @@ print(fun_of_interest)
 selected_columns = ['idb_path', 'fva', 'func_name', 'hashopcodes']
 
 df0 = flowchart[selected_columns]
+print(df0)
 df = df0.loc[df0['func_name'].isin(fun_of_interest)]
 
 print(df)
@@ -52,12 +51,11 @@ for row in datareader:
     index_1 = df.loc[ (df['idb_path'] == row[0]) & (df['func_name'] == row[1])].index
     index_2 = df.loc[ (df['idb_path'] == row[2]) & (df['func_name'] == row[3])].index
     if len(index_1) == 0 or len(index_2) == 0:
+        print(row)
         continue
     pairs.append((index_1[0],index_2[0]))
-    print(pairs[-1])
 
 #pairs = list(itertools.combinations_with_replacement(df.index,2)) # this is bad
-
 df = df.drop('index', axis=1)
 
 # **Create all pairs of all functions of interest**
@@ -75,7 +73,7 @@ for f1,f2 in tqdm(set(pairs)):
 columns = [x + "_1" for x in selected_columns ] + [x + "_2" for x in selected_columns ]
 testing = pd.DataFrame(comparison_list, columns=columns)
 
-# Add the db_type column 
+# Add the db_type column
 testing['db_type'] = ['XM'] * testing.shape[0]
 
 # Sort the rows

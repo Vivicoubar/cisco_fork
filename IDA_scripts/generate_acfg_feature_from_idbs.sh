@@ -5,9 +5,10 @@
 # create a Dbs/Dataset-Muaz folder
 # create features and pairs folders
 export IDA_PATH=/home/gabriel/idapro-7.5/idat64
-mkdir ../DBs/Dataset-Muaz
-mkdir ../DBs/Dataset-Muaz/features
-mkdir ../DBs/Dataset-Muaz/pairs
+rm -rf ../DBs/Dataset-Muaz
+mkdir -p ../DBs/Dataset-Muaz
+mkdir -p ../DBs/Dataset-Muaz/features
+mkdir -p ../DBs/Dataset-Muaz/pairs
 
 # flowchart (to select functions with at least 5 blocks)
 ## input: IDBs fodler
@@ -17,7 +18,7 @@ python3 IDA_flowchart/cli_flowchart.py -i ../IDBs/Dataset-Muaz -o ../DBs/Dataset
 # select pairs and functions
 ## input: flowchart csv file
 ## output: testing_dataset.csv, features/selected_Dataset-Muaz.json, pairs/pairs_testing_Dataset-Muaz.csv
-python3 ~/cisco_fork/IDA_scripts/dataset_creation_notebooks/Dataset-Muaz_creation.py ~/cisco_fork/IDA_scripts/dataset_creation_notebooks/fun_of_interest.txt
+python3 dataset_creation_notebooks/Dataset-Muaz_creation.py dataset_creation_notebooks/fun_of_interest.txt dataset_creation_notebooks/selected_pairs.csv
 #jupyter nbconvert --execute --to notebook dataset_creation_notebooks/Dataset-Muaz_creation.ipynb
 # compute acfg features
 ## input: selected_Dataset-Muaz.json
