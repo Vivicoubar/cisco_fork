@@ -6,14 +6,14 @@
 python3 generate_idbs.py --muaz
 
 ## generate the acfg features from the IDBs, using the sleected_pairs.csv and fun_of_interest.txt
-./generate_acfg_features_from_idbs.sh
+./generate_acfg_feature_from_idbs.sh
 
 ## run asm2vec
 
 PWD=$pwd
 
 cd "../Models/Asm2vec/"
-./testing_script.sh
+./test_script.sh
 
 cd $PWD
 echo "Done"
