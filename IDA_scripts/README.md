@@ -1,10 +1,15 @@
-# The IDA Pro scriptk
+# The IDA Pro script
 
 This folder contains:
 * [one script](run_a2v_test.sh) to run asm2vec on the current binaries in `../Binaries/Dataset-Muaz/bins/`
 * several [IDA Pro plugins](#the-ida-pro-plugins) used for the features extraction.
 
 ## Files setup before launching `run_a2v_test.sh`
+ 1. Put the **binaries** to be analyzed in `../Binaries/dataset-Muaz/bins`
+ 2. Add the `dataset_creation_notebooks/fun_of_interest.txt` and `dataset_creation_notebooks/selected_pairs.csv` files
+     1. `fun_of_interest.txt` just contains the names of the functions, one per line.
+     2. `selected_pairs.csv` has as header: `idb_path_1,func_name_1,idb_path_2,func_name_2` where `idb_path` is like: `IDBs/Dataset-Muaz/sqlite3.i64` for the binary `sqlite3`
+ 3. Make sure the names of the **binaries** and the paths in the previous files are corresponding !
 
 ## Requirements
 
@@ -52,7 +57,7 @@ Use the [generate_idbs.py](generate_idbs.py) Python3 script to automatically exp
 Example: run the plugin over the IDBs of the Dataset-Muaz (requires the IDBs in the `IDBs/Dataset-Muaz` directory)
 ```bash
 cd IDA_flowchart
-python3 cli_flowchart.py -i ../../IDBs/Dataset-Vulnerability -o flowchart_Dataset-Vulnerability.csv
+python3 cli_flowchart.py -i ../../IDBs/Dataset-Muaz -o flowchart_Dataset-Muaz.csv
 ```
 
 ---
@@ -84,5 +89,5 @@ python3 dataset_creation_notebooks/Dataset-Muaz_creation.py dataset_creation_not
 Example: run the plugin over the functions selected for the Dataset-Muaz test (requires the IDBs in the `IDBs/Dataset-Muaz` directory)
 ```bash
 cd IDA_acfg_disasm
-python3 cli_acfg_disasm.py -j ../../DBs/Dataset-Vulnerability/features/selected_Dataset-Muaz.json -o acfg_disasm_Dataset-Muaz
+python3 cli_acfg_disasm.py -j ../../DBs/Dataset-Muaz/features/selected_Dataset-Muaz.json -o acfg_disasm_Dataset-Muaz
 ```
