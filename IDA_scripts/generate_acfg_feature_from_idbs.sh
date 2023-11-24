@@ -4,7 +4,7 @@
 # put all your IDA-extracted (with /IDA_scripts/generate_idbs.py) databases in /IDBs/Dataset-Muaz/
 # create a Dbs/Dataset-Muaz folder
 # create features and pairs folders
-export IDA_PATH=/home/gabriel/idapro-7.5/idat64
+export IDA_PATH=$HOME/idapro-7.5/idat64
 rm -rf ../DBs/Dataset-Muaz
 mkdir -p ../DBs/Dataset-Muaz
 mkdir -p ../DBs/Dataset-Muaz/features
