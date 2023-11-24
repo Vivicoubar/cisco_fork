@@ -1,5 +1,11 @@
 # Asm2vec and Doc2vec
 
+## Model checkpoint:
+
+You can download the model checkpoint from this link: https://pimo.id/74d0af28
+
+---
+
 Our implementation of Asm2vec and Doc2vec is constituted by two components. The first one takes as input the [ACFG disasm](../../IDA_scripts/#ida-acfg-disasm) data and it produces as output the random walks over the selected functions. Those are then taken as input by the second part, which implements the machine learning component.
 
 ## Part 1
