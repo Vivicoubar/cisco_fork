@@ -115,6 +115,20 @@ def update_config_datasetvuln(config_dict, outputdir):
     )
 
 
+def update_config_datasetmuaz(config_dict, outputdir):
+    """Config for Dataset-Muaz."""
+    config_dict['testing'] = dict(
+        positive_path=None,
+        negative_path=None,
+        full_tests_inputs=[
+            "/input/Dataset-Muaz/pairs/pairs_testing_Dataset-Muaz.csv",
+        ],
+        full_tests_outputs=[
+            os.path.join(outputdir, "pairs_testing_Dataset-Muaz.csv")
+        ],
+        features_testing_path="/input/Dataset-Muaz/features/zeek_Dataset-Muaz.json"
+    )
+
 def get_config(args):
     """The default configs."""
 
@@ -145,5 +159,7 @@ def get_config(args):
         update_config_datasettwo(config_dict, args.outputdir)
     elif args.dataset == 'vuln':
         update_config_datasetvuln(config_dict, args.outputdir)
+    elif args.dataset == 'muaz':
+        update_config_datasetmuaz(config_dict, args.outputdir)
 
     return config_dict

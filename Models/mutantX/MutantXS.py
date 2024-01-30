@@ -1,5 +1,6 @@
 import time
 from os.path import basename
+from tqdm import tqdm
 import json
 import pickle
 
@@ -181,7 +182,7 @@ def computesEmbeddingFromBytes(idS, pathInput):
 		if not(size in [32, 64]):
 			print(idS, "error not 32/64",data["architecture"]["size"])
 			return
-		start = time.time()
+		#start = time.time()
 
 		if (size == 32):
 			for instrBytes in data["bytes"]:
@@ -191,8 +192,8 @@ def computesEmbeddingFromBytes(idS, pathInput):
 				opcodesTotal += [findOpcodeX64(instrBytes)]
 
 	embedding = computeEmbedding(opcodesTotal)
-	elapsed = time.time()-start
-	print("{} : {} - time elpased: {}, opcode length: {}".format(idS, data["architecture"], elapsed, len(opcodesTotal)))
+	#elapsed = time.time()-start
+	#print("{} : {} - time elpased: {}, opcode length: {}".format(idS, data["architecture"], elapsed, len(opcodesTotal)))
 	return embedding
 
 # == main script
@@ -211,16 +212,11 @@ E = {}
 
 u = 0
 start = time.time()
-for (pathInput, key_id) in TODO:
-	print("Processing path : {} , key_id : {}".format(pathInput,key_id))
+for (pathInput, key_id) in tqdm(TODO,desc="Processing acfgs"):
 	try:
 		E[key_id] = computesEmbeddingFromBytes(key_id, pathInput)
 	except Exception as e:
 		print("Exception:",key_id,e)
-	u += 1
-	if u % 100 == 0:
-		timeLeft = ((len(TODO) - u)) * ((time.time()-start)/u)
-		print(u*100/len(TODO),"%",int(timeLeft), "s")
 
 
 with open("MUTANTX2", "wb") as f:

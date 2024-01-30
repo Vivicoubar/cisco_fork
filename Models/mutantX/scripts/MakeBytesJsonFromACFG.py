@@ -26,7 +26,6 @@ def getFunName(csv_file, bin_name, fun_ea):
         print("Could not find {}:{:x} in {}".format(bin_name, fun_ea, csv_file))
         return ""
 
-
 #Return a list where each item is the bytes of 1 instruction
 def getInstBytesFromBB(bb_name, data):
 
@@ -62,7 +61,7 @@ for key in d.keys():
 
     for fun_ea in [k for k in d[key].keys() if k != "arch"]:
         # all keys are function entry points, except "arch"
-        fun_name = getFunName(args.fun_info_file, "IDBs/Dataset-Muaz/{}.i64".format(basename(args.input_acfg).replace("_acfg_disasm.json","")), fun_ea)
+        fun_name = getFunName(args.fun_info_file, key, fun_ea)
         if len(fun_name) == 0:
             continue
 

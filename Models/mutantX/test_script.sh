@@ -1,24 +1,26 @@
 # This script writes a .csv containing the scores of selected pairs of functions
 
+DATASET_KEY="Muaz"
 # Input:
-DB_PATH=$HOME/cisco_fork/DBs/Dataset-Muaz/
+DB_PATH=$HOME/cisco_fork/DBs/Dataset-${DATASET_KEY}/
 OUTPUT=$(pwd)/bytes/ # where the bytes.json are saved
 OUTPUT_SCORES=$(pwd)/pairs_results_Dataset-Muaz_mut.csv # where the bytes.json are saved
 
 CWD=$(pwd)
-PAIR_LIST=$DB_PATH/pairs/pairs_testing_Dataset-Muaz.csv
-TESTING_PATH=$DB_PATH/testing_Dataset-Muaz.csv
+PAIR_LIST=$DB_PATH/pairs/pairs_testing_Dataset-${DATASET_KEY}.csv
+TESTING_PATH=$DB_PATH/testing_Dataset-${DATASET_KEY}.csv
 ACFG_PATH=$DB_PATH/features/acfg_disasm/
 
 #== cleaning
 
-rm $OUTPUT/*
-rm MUTANTX2
+rm "$OUTPUT"/*
+rm "$OUTPUT_SCORES"
+rm "MUTANTX2"
 
 #== main script
 
 job(){
-	echo "Making bytes .json from $1"
+	#echo "Making bytes .json from $1"
 	# output -> saves the .json files containing data on the binary code bytes in bytes/binary.json
 	if ! python3 MakeBytesJsonFromACFG.py $1 $2 $3; then
 		echo "Failed !"
@@ -26,10 +28,18 @@ job(){
 	fi
 }
 
+echo "Making bytes json from acfg files..."
 cd scripts
 for acfg_file in $(find $ACFG_PATH -type f); do
-	job $acfg_file $TESTING_PATH $OUTPUT &
+	job "$acfg_file" "$TESTING_PATH" "$OUTPUT" &
+	pids[${i}]=$!
 done
+
+# wait for all pids
+for pid in ${pids[*]}; do
+    wait $pid
+done
+echo "Done"
 
 cd $CWD
 echo "Running MutantX to create MUTANTX2 file embeddings..."

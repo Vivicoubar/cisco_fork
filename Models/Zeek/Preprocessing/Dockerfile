@@ -7,6 +7,8 @@ RUN apt-get install -y binutils-arm-linux-gnueabi binutils-aarch64-linux-gnu bin
 RUN mkdir /code
 COPY requirements.txt /code/
 RUN pip install -r /code/requirements.txt
+RUN pip uninstall pyelftools -y
+RUN pip install pyelftools==0.29
 
 COPY zeek.py /code/
 COPY test_zeek.py /code/
