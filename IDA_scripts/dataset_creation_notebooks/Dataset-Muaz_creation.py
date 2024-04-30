@@ -42,8 +42,6 @@ print(df)
 # Store the new function pairs
 df.reset_index(inplace=True)
 
-import csv
-
 datareader = csv.reader(file_pairs)
 next(datareader) # skip header
 pairs=list()
