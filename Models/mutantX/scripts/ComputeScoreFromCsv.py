@@ -52,7 +52,7 @@ for ind, row in tqdm(df.iterrows(), desc="Computing pair scores ...", total=len(
     emb1 = mut_dict[p] # this is np darray of shape (4096,) (?)
     emb2 = mut_dict[t]
     sim = cosine_similarity(emb1,emb2)
-    line = [ p[0], t[0], p[1], t[1], sim ]
+    line = [ p[0], p[1], t[0], t[1], sim ]
     l.append(line)
 
     #new_row = dict()
