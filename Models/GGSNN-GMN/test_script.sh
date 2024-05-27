@@ -31,5 +31,5 @@ else
 fi
 
 echo -e "\n *** Results saved in $(pwd)/NeuralNetwork/Dataset-Muaz/pairs_testing_Dataset-Muaz_"$1".csv\n"
-cp NeuralNetwork/Dataset-Muaz/pairs_testing_Dataset-Muaz.csv ~/codemerger/data/inst_insertion_test/results/pairs_results_Dataset-Muaz_"$1".csv
+cp NeuralNetwork/Dataset-Muaz/pairs_testing_Dataset-Muaz.csv ~/codemerger/scripts/benchmark/results/pairs_results_Dataset-Muaz_"$1".csv
 # we directly have the output csv file

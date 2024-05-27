@@ -6,6 +6,9 @@ RUN apt-get update && apt-get -y upgrade && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1 && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
 
+RUN pip3 install --upgrade pip
+RUN pip3 install tensorflow==1.14.0
+
 RUN pip3 install Cython==0.29.30 && \
     pip3 install numpy==1.21.6 && \
     pip3 install pybind11==2.9.2 && \

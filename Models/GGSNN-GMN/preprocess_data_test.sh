@@ -1,3 +1,4 @@
+#!/bin/bash
 docker run --rm \
        -v $(pwd)/../../DBs/Dataset-Muaz/features/acfg_disasm:/input \
        -v $(pwd)/Preprocessing/Dataset-1_training:/training_data \

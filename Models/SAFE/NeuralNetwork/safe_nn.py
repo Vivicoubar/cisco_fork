@@ -157,7 +157,7 @@ def main():
                         help='Continue the training from the last checkpoint')
 
     parser.add_argument('--dataset', required=True,
-                        choices=['one', 'two', 'vuln'],
+                        choices=['one', 'two', 'vuln', 'muaz'],
                         help='Choose the dataset to use for the train or test')
 
     parser.add_argument('-c', '--checkpointdir', required=True,

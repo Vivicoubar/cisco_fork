@@ -25,5 +25,5 @@ echo "Converting results..."
 python3 Convert_Asm2vec_results.py
 
 echo -e "\n*** Pairs results saved in $(pwd)/../data/Dataset-Muaz/"
-cp $(pwd)/../data/Dataset-Muaz/pairs_testing_Dataset-Muaz_asm2vec_e10.csv ~/codemerger/data/inst_insertion_test/results/pairs_results_Dataset-Muaz_a2v.csv
+cp $(pwd)/../data/Dataset-Muaz/pairs_testing_Dataset-Muaz_asm2vec_e10.csv ~/codemerger/scripts/benchmark/results/pairs_results_Dataset-Muaz_a2v.csv
 echo -e "\nResult copied in ~/codemerger/data/inst_insertion_test/results/pairs_results_Dataset-Muaz_a2v.csv"

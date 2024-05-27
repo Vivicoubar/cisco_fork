@@ -96,6 +96,12 @@ class PairFactoryInference(PairFactoryBase):
 
             for _ in range(self._num_get_pairs_iterations):
                 data = next(iterator)[1]
+                if( data['fva_1'] not in self._features_dict[data['idb_path_1']]['hashes'].keys()):
+                    print("Warning, {} not in  data idb path 1".format(data['fva_1']))
+                    continue
+                if( data['fva_2'] not in self._features_dict[data['idb_path_2']]['hashes'].keys()):
+                    print("Warning, {} not in  data idb path 2".format(data['fva_2']))
+                    continue
 
                 f1 = self._features_dict[
                     data['idb_path_1']]['hashes'][data['fva_1']]['sh']

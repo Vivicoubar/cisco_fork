@@ -8,3 +8,4 @@ tensorflow-estimator==1.14.0
 tensorflow-probability==0.7
 tensorflow==1.14.0
 tqdm==4.64.0
+protobuf==3.20.*

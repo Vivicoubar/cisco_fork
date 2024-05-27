@@ -49,7 +49,7 @@ for row in datareader:
     index_1 = df.loc[ (df['idb_path'] == row[0]) & (df['func_name'] == row[1])].index
     index_2 = df.loc[ (df['idb_path'] == row[2]) & (df['func_name'] == row[3])].index
     if len(index_1) == 0 or len(index_2) == 0:
-        print(row)
+        #print("Could not find lines with pair {} in flochart file".format(row))
         continue
     pairs.append((index_1[0],index_2[0]))
 

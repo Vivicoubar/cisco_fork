@@ -1,6 +1,7 @@
 import argparse
 import pickle
 import pandas as pd
+import numpy as np
 from tqdm import tqdm
 from scipy.spatial.distance import cosine
 
@@ -32,32 +33,40 @@ def cosine_similarity(e1, e2):
 df = pd.read_csv(args.pairs_list)
 new_df = pd.DataFrame(columns=["idb_path_1","func_name_1","idb_path_2","func_name_2","sim"])
 
-for ind,row in tqdm(df.iterrows(), desc="Computing pair scores..."):
+l = list()
+skipedP, skipedT = 0, 0
+for ind, row in tqdm(df.iterrows(), desc="Computing pair scores ...", total=len(df)):
     # get p and t: those are going to be the keys for the embeddings in the mutantx2 pickled ouptut
     p = (clean_bin_name(row["idb_path_1"]), row["func_name_1"])
     t = (clean_bin_name(row["idb_path_2"]), row["func_name_2"])
 
     if p not in mut_dict.keys():
-        print("{} not in mut_dict, skipping it".format(p))
+        #print("{} not in mut_dict, skipping it".format(p))
+        skipedP += 1
         continue
     if t not in mut_dict.keys():
-        print("{} not in mut_dict, skipping it".format(t))
+        skipedT += 1
+        #print("{} not in mut_dict, skipping it".format(t))
         continue
 
     emb1 = mut_dict[p] # this is np darray of shape (4096,) (?)
     emb2 = mut_dict[t]
     sim = cosine_similarity(emb1,emb2)
+    line = [ p[0], t[0], p[1], t[1], sim ]
+    l.append(line)
 
-    new_row = dict()
-    new_row["idb_path_1"] = p[0]
-    new_row["idb_path_2"] = t[0]
-    new_row["func_name_1"] = p[1]
-    new_row["func_name_2"] = t[1]
-    new_row["sim"] = sim
+    #new_row = dict()
+    #new_row["idb_path_1"] = p[0]
+    #new_row["idb_path_2"] = t[0]
+    #new_row["func_name_1"] = p[1]
+    #new_row["func_name_2"] = t[1]
+    #new_row["sim"] = sim
 
-    #new_df = new_df.append(new_row, ignore_index=True)
-    new_df.loc[len(new_df)] = new_row
+    ##new_df = new_df.append(new_row, ignore_index=True)
+    #new_df.loc[len(new_df)] = new_row
 
+new_df = pd.DataFrame(l, columns=["idb_path_1","func_name_1","idb_path_2","func_name_2","sim"])
+print("Skipped P: {}, skipped T {}".format(skipedP, skipedT))
 print("*** Success : {} / {} pairs were found".format(len(new_df),len(df)))
 # --- save the results
 new_df.to_csv(args.out_path, index=False)

@@ -112,6 +112,48 @@ def update_config_datasettwo(config_dict, outputdir, featuresdir):
             "instructions_embeddings_list_250.json")
     )
 
+def update_config_datasetmuaz(config_dict, outputdir, featuresdir):
+    """Config for Muaz dataset."""
+    testdir = "/input/Dataset-Muaz/pairs"
+    inputdir_1 = "/input/Dataset-1/"
+    config_dict['testing'] = dict(
+        full_tests_inputs=[
+            os.path.join(testdir, "pairs_testing_Dataset-Muaz.csv")
+        ],
+        full_tests_outputs=[
+            os.path.join(outputdir, "pairs_testing_Dataset-Muaz.csv")
+        ],
+        features_testing_path=os.path.join(
+            featuresdir,
+            "Dataset-Muaz",
+            "instructions_embeddings_list_250.json")
+    )
+
+    ## NOTE: we update the next two one even if we use dataset 2 for test
+    ## otherwise it doesn't work ¯\_(ツ)_/¯
+    ## related to how the model is restored: they still initialize a new
+    ## model using the training_data provided here before restoring it
+    ## using the checkpoint. I don't know enough about tensorflow to know
+    ## if this step could be entirely removed in case of "--test"
+    # Training
+    config_dict['training']['df_train_path'] = \
+        os.path.join(inputdir_1, "training_Dataset-1.csv")
+    config_dict['training']['features_train_path'] = \
+        os.path.join(
+            featuresdir, "Dataset-1_training",
+            "instructions_embeddings_list_250.json")
+
+    # Validation
+    valdir = os.path.join(inputdir_1, "pairs", "validation")
+    config_dict['validation'] = dict(
+        positive_path=os.path.join(valdir, "pos_validation_Dataset-1.csv"),
+        negative_path=os.path.join(valdir, "neg_validation_Dataset-1.csv"),
+        features_validation_path=os.path.join(
+            featuresdir,
+            "Dataset-1_validation",
+            "instructions_embeddings_list_250.json")
+    )
+
 
 def update_config_datasetvuln(config_dict, outputdir, featuresdir):
     """Config for Dataset-Vulnerability."""
@@ -170,6 +212,9 @@ def get_config(args):
             config_dict, args.outputdir, args.featuresdir)
     elif args.dataset == 'vuln':
         update_config_datasetvuln(
+            config_dict, args.outputdir, args.featuresdir)
+    elif args.dataset == "muaz":
+        update_config_datasetmuaz(
             config_dict, args.outputdir, args.featuresdir)
 
     return config_dict
