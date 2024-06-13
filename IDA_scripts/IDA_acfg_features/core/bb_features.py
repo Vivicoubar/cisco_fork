@@ -29,6 +29,8 @@
 ##############################################################################
 
 import idautils
+import sys
+sys.path.append('/home/gabriel/cisco_fork/IDA_scripts/IDA_acfg_features/core/')
 
 from architecture import ARCH_MNEM
 

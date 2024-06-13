@@ -21,37 +21,38 @@ print(flowchart.shape)
 
 # **Functions of interest**
 
-#fun_of_interest = list(flowchart['func_name'])
+
 file = open(args.fun_of_interest_path,'r')
 file_pairs = open(args.selected_pairs_path,'r')
 
-fun_of_interest = []
-for line in file.readlines():
-    if line.split('\n')[0] in fun_of_interest:
-        continue
-    fun_of_interest.append(line.split('\n')[0])
-file.close()
-print(fun_of_interest)
 selected_columns = ['idb_path', 'fva', 'func_name', 'hashopcodes']
 
-df0 = flowchart[selected_columns]
-print(df0)
-df = df0.loc[df0['func_name'].isin(fun_of_interest)]
-
-print(df)
-# Store the new function pairs
+df = flowchart[selected_columns]
 df.reset_index(inplace=True)
+flowchart_dict = dict()
 
-datareader = csv.reader(file_pairs)
-next(datareader) # skip header
+for i, row in tqdm(df.iterrows(), total= len(df)):
+    flowchart_dict[(row["idb_path"], row["func_name"])] = i
+print("Flowchart df shape {}".format(df.shape))
+
 pairs=list()
-for row in datareader:
-    index_1 = df.loc[ (df['idb_path'] == row[0]) & (df['func_name'] == row[1])].index
-    index_2 = df.loc[ (df['idb_path'] == row[2]) & (df['func_name'] == row[3])].index
-    if len(index_1) == 0 or len(index_2) == 0:
-        #print("Could not find lines with pair {} in flochart file".format(row))
+selected_pairs =  pd.read_csv(file_pairs)
+print("Selected pairs df shape {}".format(selected_pairs.shape))
+skipped_funs = set()
+for i, row in tqdm(selected_pairs.iterrows(), total=len(selected_pairs)):
+    #index_1 = df.loc[ (df['idb_path'] == row["idb_path_1"]) & (df['func_name'] == row["func_name_1"])].index
+    #index_2 = df.loc[ (df['idb_path'] == row["idb_path_2"]) & (df['func_name'] == row["func_name_2"])].index
+    t1 = (row["idb_path_1"], row["func_name_1"])
+    t2 = (row["idb_path_2"], row["func_name_2"])
+    if t1 not in flowchart_dict.keys():
+        skipped_funs.add(t1)
         continue
-    pairs.append((index_1[0],index_2[0]))
+    elif t2 not in flowchart_dict.keys():
+        skipped_funs.add(t2)
+        continue
+    index_1 = flowchart_dict[t1]
+    index_2 = flowchart_dict[t2]
+    pairs.append((index_1,index_2))
 
 #pairs = list(itertools.combinations_with_replacement(df.index,2)) # this is bad
 df = df.drop('index', axis=1)
