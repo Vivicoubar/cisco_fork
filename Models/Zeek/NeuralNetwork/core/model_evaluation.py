@@ -115,7 +115,13 @@ def evaluate(sess, eval_metrics, placeholders, batch_generator):
         test_db_type = item[0]
         # List of indexes for this test case
         indexes = list(item[1])
-
+        skip = False
+        for i in indexes:
+            if i > len(pair_label_list):
+                skip = True
+                break
+        if skip:
+            continue
         l_fpr, l_tpr, l_thresholds = metrics.roc_curve(
             # select the labels at "indexes"
             pair_label_list[indexes],

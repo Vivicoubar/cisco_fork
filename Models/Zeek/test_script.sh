@@ -4,7 +4,7 @@ docker run --rm --name zeek_preprocessing -v $(pwd)/../../DBs/Dataset-Muaz/featu
 
 cp Preprocessing/zeek_intermediate/Dataset-Muaz/zeek.json ../../DBs/Dataset-Muaz/features/zeek_Dataset-Muaz.json
 
-docker run --rm -v $(pwd)/../../DBs:/input -v $(pwd)/NeuralNetwork/:/output -it zeekneuralnetwork /code/zeek_nn.py --test --dataset muaz -c /code/model_checkpoint -o /output/Dataset-Muaz
+docker run --rm -v $(pwd)/../../DBs:/input -v $(pwd)/NeuralNetwork/:/output -it zeekneuralnetwork /code/zeek_nn.py --test --dataset muaz -c model_checkpoint_2024-06-14/ -o /output/Dataset-Muaz
 
 cp NeuralNetwork/Dataset-Muaz/pairs_testing_Dataset-Muaz.csv ~/codemerger/scripts/benchmark/results/pairs_results_Dataset-Muaz_zek.csv
 # copy the output
