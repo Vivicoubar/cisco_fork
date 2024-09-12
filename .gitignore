@@ -60,6 +60,7 @@ Models/Zeek/Preprocessing/zeek_intermediate
 Models/mutantX/MUTANTX2
 Models/mutantX/bytes
 Models/mutantX/*Dataset*
+Models/Forest
 
 Results/data/
 Results/my_exp_data
