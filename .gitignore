@@ -51,9 +51,10 @@ Models/SAFE/NeuralNetwork/Dataset*
 Models/SAFE/Pretraining/Dataset*
 Models/SAFE/Pretesting/Dataset*
 Models/Trex/NeuralNetwork/Dataset*
-Models/Trex/NeuralNetwork/Dataset*
+Models/Trex/NeuralNetwork/data*
+Models/Trex/Preprocessing/Dataset*
 Models/Zeek/NeuralNetwork/Dataset*
-Models/Zeek/NeuralNetwork/Dataset*
+Models/Zeek/Preprocessing/Dataset*
 Models/mutantX/MUTANTX2
 Models/mutantX/bytes
 Models/mutantX/*Dataset*
