@@ -49,6 +49,7 @@ Models/GGSNN-GMN/**/**dict_opc_*
 Models/Asm2vec/*Dataset*
 Models/SAFE/NeuralNetwork/Dataset*
 Models/SAFE/Pretraining/Dataset*
+Models/SAFE/Preprocessing/Dataset*
 Models/SAFE/Pretesting/Dataset*
 Models/Trex/NeuralNetwork/Dataset*
 Models/Trex/NeuralNetwork/data*
