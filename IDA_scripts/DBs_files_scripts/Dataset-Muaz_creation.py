@@ -39,6 +39,7 @@ pairs=list()
 selected_pairs =  pd.read_csv(file_pairs)
 print("Selected pairs df shape {}".format(selected_pairs.shape))
 skipped_funs = set()
+#breakpoint()
 for i, row in tqdm(selected_pairs.iterrows(), total=len(selected_pairs)):
     #index_1 = df.loc[ (df['idb_path'] == row["idb_path_1"]) & (df['func_name'] == row["func_name_1"])].index
     #index_2 = df.loc[ (df['idb_path'] == row["idb_path_2"]) & (df['func_name'] == row["func_name_2"])].index
@@ -54,14 +55,14 @@ for i, row in tqdm(selected_pairs.iterrows(), total=len(selected_pairs)):
     index_2 = flowchart_dict[t2]
     pairs.append((index_1,index_2))
 
-#pairs = list(itertools.combinations_with_replacement(df.index,2)) # this is bad
+#breakpoint()
 df = df.drop('index', axis=1)
+print("Skipped functions: {}".format(len(skipped_funs)))
+print("Nb of fun: {}".format(len(df)))
 
 # **Create all pairs of all functions of interest**
 
 comparison_list = list()
-print("Nb of fun: {}".format(len(df)))
-
 # Iterate over each unique pair of function in the list
 i=0
 for f1,f2 in tqdm(set(pairs)):

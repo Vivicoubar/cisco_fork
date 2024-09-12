@@ -143,7 +143,8 @@ def directory_walk(input_folder, output_folder):
 @click.option('--dbvuln', is_flag=True)
 @click.option('--test', is_flag=True)
 @click.option('--muaz', is_flag=True)
-def main(db1, db2, db3, dbvuln, test, muaz):
+@click.option('--adv', is_flag=True)
+def main(db1, db2, db3, dbvuln, test, muaz, adv):
     """Launch IDA Pro and export the IDBs."""
     if not isfile(IDA_PATH):
         print("[!] Error: IDA_PATH:{} not valid".format(IDA_PATH))
@@ -156,6 +157,11 @@ def main(db1, db2, db3, dbvuln, test, muaz):
         directory_walk(
             join(BIN_FOLDER, 'Dataset-Muaz/bins/'),
             join(IDB_FOLDER, 'Dataset-Muaz'))
+    if adv:
+        no_action = False
+        directory_walk(
+            join(BIN_FOLDER, 'Dataset-adv'),
+            join(IDB_FOLDER, 'Dataset-adv'))
     if db3:
         no_action = False
         directory_walk(
