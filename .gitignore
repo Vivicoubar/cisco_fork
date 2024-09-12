@@ -49,3 +49,5 @@ Models/Asm2vec/*Dataset*
 
 Results/data/
 Results/my_exp_data
+Results/**/*.png
+Results/**/*.csv

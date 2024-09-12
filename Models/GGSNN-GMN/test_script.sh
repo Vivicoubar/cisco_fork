@@ -1,12 +1,16 @@
 # $1 : gnn or gmn
 
 set -e
-./preprocess_data_test.sh
+
+docker run --rm \
+       -v $(pwd)/../../DBs/Dataset-Muaz/features/acfg_disasm:/input \
+       -v $(pwd)/Preprocessing/Dataset-1_training:/training_data \
+       -v $(pwd)/Preprocessing/Dataset-Muaz:/output \
+       -it gnn-preprocessing /code/gnn_preprocessing.py -i /input -d /training_data/opcodes_dict.json -o /output
 
 echo " ------------------------ Done preprocessing"
 
 if [ "$1" = "gnn" ]; then
-#-c /output/model_checkpoint_2023-05-16 \ #TODO:change that
 docker run --rm \
 	-v $(pwd)/../../DBs:/input \
 	-v $(pwd)/NeuralNetwork/:/output \
@@ -14,11 +18,10 @@ docker run --rm \
 	-it gnn-neuralnetwork /code/gnn.py --test \
 		--model_type embedding --training_mode pair \
 		--features_type opc --dataset muaz \
-		-c /output/model_checkpoint_GNN_DB3_2024-06-14 \
+		-c /output/model_checkpoint_2023-05-16 \
 		-o /output/Dataset-Muaz
 
 elif [ "$1" = "gmn" ]; then
-#-c /output/model_checkpoint_GMN_2023-09-26 \
 docker run --rm \
 	-v $(pwd)/../../DBs:/input \
 	-v $(pwd)/NeuralNetwork/:/output \
@@ -26,7 +29,7 @@ docker run --rm \
 	-it gnn-neuralnetwork /code/gnn.py --test \
 		--model_type matching --training_mode pair \
 		--features_type opc --dataset muaz \
-		-c /output/model_checkpoint_GMN_DB3_2024-06-14 \
+		-c /output/model_checkpoint_GMN_2023-09-26 \
 		-o /output/Dataset-Muaz
 
 else

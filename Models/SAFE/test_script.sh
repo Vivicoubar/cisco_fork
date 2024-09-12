@@ -15,7 +15,7 @@ docker run --rm \
     -it safe-neuralnetwork /code/safe_nn.py \
         --test \
         --dataset muaz \
-        -c /code/model_checkpoint \
+        -c /output/model_checkpoint_2024-06-14 \
         -o /output/Dataset-Muaz_testing
 
 echo -e "\n *** Results saved in $(pwd)/NeuralNetwork/Dataset-Muaz_testing\n"
