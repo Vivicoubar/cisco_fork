@@ -247,6 +247,51 @@ def update_config_datasetmuaz(config_dict, outputdir, featuresdir):
             "Dataset-1_validation",
             "graph_func_dict_opc_200.json")
     )
+
+def update_config_datasetadv(config_dict, outputdir, featuresdir):
+    """Config for Dataset-adv."""
+    inputdir = "/input/Dataset-adv/"
+
+    # Training
+    config_dict['training']['df_train_path'] = \
+        os.path.join(inputdir, "training_Dataset-adv.csv")
+    config_dict['training']['features_train_path'] = \
+        os.path.join(
+            featuresdir, "Dataset-adv_training",
+            "graph_func_dict_opc_200.json")
+
+    # Validation
+    valdir = os.path.join(inputdir, "pairs", "validation")
+    config_dict['validation'] = dict(
+        positive_path=os.path.join(valdir, "pos_validation_Dataset-adv.csv"),
+        negative_path=os.path.join(valdir, "neg_validation_Dataset-adv.csv"),
+        features_validation_path=os.path.join(
+            featuresdir,
+            "Dataset-adv_validation",
+            "graph_func_dict_opc_200.json")
+    )
+
+    # Testing
+    testdir = os.path.join(inputdir, "pairs", "testing")
+    config_dict['testing'] = dict(
+        full_tests_inputs=[
+            os.path.join(testdir, "neg_rank_testing_Dataset-adv.csv"),
+            os.path.join(testdir, "neg_testing_Dataset-adv.csv"),
+            os.path.join(testdir, "pos_rank_testing_Dataset-adv.csv"),
+            os.path.join(testdir, "pos_testing_Dataset-adv.csv")
+        ],
+        full_tests_outputs=[
+            os.path.join(outputdir, "neg_rank_testing_Dataset-adv_sim.csv"),
+            os.path.join(outputdir, "neg_testing_Dataset-adv_sim.csv"),
+            os.path.join(outputdir, "pos_rank_testing_Dataset-adv_sim.csv"),
+            os.path.join(outputdir, "pos_testing_Dataset-_sim2.csv")
+        ],
+        features_testing_path=os.path.join(
+            featuresdir,
+            "Dataset-adv_testing",
+            "graph_func_dict_opc_200.json")
+    )
+
 def get_config(args):
     """The default configs."""
     NODE_STATE_DIM = 32
@@ -337,6 +382,9 @@ def get_config(args):
             config_dict, args.outputdir, args.featuresdir)
     elif args.dataset == "muaz":
         update_config_datasetmuaz(
+            config_dict, args.outputdir, args.featuresdir)
+    elif args.dataset == "adv":
+        update_config_datasetadv(
             config_dict, args.outputdir, args.featuresdir)
 
     return config_dict
