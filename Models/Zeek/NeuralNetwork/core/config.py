@@ -56,8 +56,8 @@ def update_config_datasetone(config_dict, outputdir):
     config_dict['training']['features_train_path'] = \
         "/input/Dataset-1/features/training/zeek_Dataset-1_training.json"
     config_dict['validation'] = dict(
-        positive_path="/input/Dataset-1/pairs/validation/pos_validation_Dataset-1.csv",
-        negative_path="/input/Dataset-1/pairs/validation/neg_validation_Dataset-1.csv",
+        positive_path="/input/dataset-1/pairs/validation/pos_validation_dataset-1.csv",
+        negative_path="/input/dataset-1/pairs/validation/neg_validation_dataset-1.csv",
         features_validation_path="/input/Dataset-1/features/validation/zeek_Dataset-1_validation.json"
     )
     config_dict['testing'] = dict(
@@ -129,6 +129,35 @@ def update_config_datasetmuaz(config_dict, outputdir):
         features_testing_path="/input/Dataset-Muaz/features/zeek_Dataset-Muaz.json"
     )
 
+def update_config_datasetadv(config_dict, outputdir):
+    """Config for Dataset-adv."""
+    config_dict['training']['df_train_path'] = \
+        "/input/Dataset-adv/training_Dataset-adv.csv"
+    config_dict['training']['features_train_path'] = \
+        "/input/Dataset-adv/features/training/zeek_Dataset-adv_training.json"
+    config_dict['validation'] = dict(
+        positive_path="/input/Dataset-adv/pairs/validation/pos_validation_Dataset-adv.csv",
+        negative_path="/input/Dataset-adv/pairs/validation/neg_validation_Dataset-adv.csv",
+        features_validation_path="/input/Dataset-adv/features/validation/zeek_Dataset-adv_validation.json"
+    )
+    config_dict['testing'] = dict(
+        positive_path="/input/Dataset-adv/pairs/testing/pos_testing_Dataset-adv.csv",
+        negative_path="/input/Dataset-adv/pairs/testing/neg_testing_Dataset-adv.csv",
+        full_tests_inputs=[
+            "/input/Dataset-adv/pairs/testing/neg_rank_testing_Dataset-adv.csv",
+            "/input/Dataset-adv/pairs/testing/neg_testing_Dataset-adv.csv",
+            "/input/Dataset-adv/pairs/testing/pos_rank_testing_Dataset-adv.csv",
+            "/input/Dataset-adv/pairs/testing/pos_testing_Dataset-adv.csv"
+        ],
+        full_tests_outputs=[
+            os.path.join(outputdir, "neg_rank_testing_Dataset-adv_sim.csv"),
+            os.path.join(outputdir, "neg_testing_Dataset-adv_sim.csv"),
+            os.path.join(outputdir, "pos_rank_testing_Dataset-adv_sim.csv"),
+            os.path.join(outputdir, "pos_testing_Dataset-adv_sim.csv")
+        ],
+        features_testing_path="/input/Dataset-adv/features/testing/zeek_Dataset-adv_testing.json"
+    )
+
 def get_config(args):
     """The default configs."""
 
@@ -161,5 +190,7 @@ def get_config(args):
         update_config_datasetvuln(config_dict, args.outputdir)
     elif args.dataset == 'muaz':
         update_config_datasetmuaz(config_dict, args.outputdir)
+    elif args.dataset == 'adv':
+        update_config_datasetadv(config_dict, args.outputdir)
 
     return config_dict
