@@ -45,6 +45,7 @@ IDA_scripts/**/*_log.txt
 IDA_scripts/**/*.nbconvert.*
 IDA_scripts/generate_idbs.py
 
+Models/**/*checkpoint*
 Models/GGSNN-GMN/**/**dict_opc_*
 Models/Asm2vec/*Dataset*
 Models/SAFE/NeuralNetwork/Dataset*
