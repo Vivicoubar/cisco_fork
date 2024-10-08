@@ -20,5 +20,5 @@ docker run --rm \
 
 echo -e "\n *** Results saved in $(pwd)/NeuralNetwork/Dataset-Muaz_testing\n"
 
-cp $(pwd)/NeuralNetwork/Dataset-Muaz_testing/pairs_testing_Dataset-Muaz.csv ~/codemerger/scripts/benchmark/results/pairs_results_Dataset-Muaz_saf.csv
+cp $(pwd)/NeuralNetwork/Dataset-Muaz_testing/pairs_testing_Dataset-Muaz.csv ../../Results/csv/pairs_results_Dataset-Muaz_saf.csv
 echo -e "\nResult copied in ~/codemerger/scripts/benchmark/results/pairs_results_Dataset-Muaz_saf.csv"

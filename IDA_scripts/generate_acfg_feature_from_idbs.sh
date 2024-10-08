@@ -20,8 +20,8 @@ python3 IDA_flowchart/cli_flowchart.py -i ../IDBs/Dataset-Muaz -o ../DBs/Dataset
 ## input: flowchart csv file
 ## output: testing_dataset.csv, features/selected_Dataset-Muaz.json, pairs/pairs_testing_Dataset-Muaz.csv
 echo "[*] Launching dataset_creation_notebooks/Dataset-Muaz_creation.py"
-python3 dataset_creation_notebooks/Dataset-Muaz_creation.py dataset_creation_notebooks/fun_of_interest.txt dataset_creation_notebooks/selected_pairs.csv
-#jupyter nbconvert --execute --to notebook dataset_creation_notebooks/Dataset-Muaz_creation.ipynb
+python3 DBs_files_scripts/Dataset-Muaz_creation.py DBs_files_scripts/selected_pairs.csv
+
 # compute acfg features
 ## input: selected_Dataset-Muaz.json
 ## output: features/acfg_disasm/acfg_disasm.json files

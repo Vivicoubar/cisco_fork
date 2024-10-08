@@ -62,7 +62,7 @@ echo "Done"
 # output -> a csv file containing the score (cosine similarity) (like the cisco output !)
 cd $CWD
 
-cp pairs_results_Dataset-Muaz_mut.csv $HOME/codemerger/scripts/benchmark/results/
-echo "Pairs results was copied in $HOME/codemerger/data/inst_insertion_test/results/pairs_results_Dataset-Muaz_mut.csv"
+cp pairs_results_Dataset-Muaz_mut.csv ../../Results/csv
+echo "Pairs results was copied in ../../Results/csv"
 
 # copy the csv line to ~/codemerger/data/inst_insertion_test/results/pairs_results_Dataset-Muaz_mut.csv
