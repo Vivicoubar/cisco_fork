@@ -18,7 +18,7 @@ docker run --rm \
 	-it gnn-neuralnetwork /code/gnn.py --test \
 		--model_type embedding --training_mode pair \
 		--features_type opc --dataset muaz \
-		-c /output/model_checkpoint_2023-05-16 \
+		-c /output/model_checkpoint_GGSNN_pair \
 		-o /output/Dataset-Muaz
 
 elif [ "$1" = "gmn" ]; then
@@ -29,7 +29,7 @@ docker run --rm \
 	-it gnn-neuralnetwork /code/gnn.py --test \
 		--model_type matching --training_mode pair \
 		--features_type opc --dataset muaz \
-		-c /output/model_checkpoint_GMN_2023-09-26 \
+		-c /output/model_checkpoint_GMN_DB3_2024-06-14 \
 		-o /output/Dataset-Muaz
 
 else

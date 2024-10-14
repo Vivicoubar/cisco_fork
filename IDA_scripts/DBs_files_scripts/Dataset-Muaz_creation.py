@@ -10,26 +10,30 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("selected_pairs_path")
+parser.add_argument("flowchart_path")
+parser.add_argument("output_pairs_testing")
+parser.add_argument("output_selected_json")
+parser.add_argument("output_testing_csv")
 args = parser.parse_args()
 
 
 # **Read the flowchart CSV**
 
-flowchart_file = pd.read_csv("../../DBs/Dataset-Muaz/features/flowchart_Dataset-Muaz.csv")
+flowchart_file = pd.read_csv(args.flowchart_path)
 print(flowchart_file.shape)
 
 
 # **Functions of interest**
 
-file_pairs = open(args.selected_pairs_path,'r')
+file_pairs = open(args.selected_pairs_path, 'r')
 
 selected_columns = ['idb_path', 'fva', 'func_name', 'hashopcodes']
 df = flowchart_file[selected_columns]
 df.reset_index(inplace=True)
 print("Flowchart selected columns df shape {}".format(df.shape))
 
-flowchart_dict = dict() # used to make the pairs, fast
-for i, row in tqdm(df.iterrows(), total= len(df)):
+flowchart_dict = dict()  # used to make the pairs, fast
+for i, row in tqdm(df.iterrows(), total=len(df)):
     flowchart_dict[(row["idb_path"], row["func_name"])] = i
 df = df.drop('index', axis=1)
 
@@ -85,7 +89,7 @@ del testing['hashopcodes_1']
 del testing['hashopcodes_2']
 
 # Save the DataFrame to file
-testing.to_csv("../../DBs/Dataset-Muaz/pairs/pairs_testing_Dataset-Muaz.csv")
+testing.to_csv(args.output_pairs_testing)
 
 # Save the "selected functions" to a JSON.
 # This is useful to limit the IDA analysis to some functions only.
@@ -102,7 +106,7 @@ for t in testing_functions:
 assert(sum([len(v) for v in selected_functions.values()]) == len(testing_functions))
 
 # Save to file
-with open("../../DBs/Dataset-Muaz/features/selected_Dataset-Muaz.json", "w+") as f_out:
+with open(args.output_selected_json, "w+") as f_out:
 
     json.dump(selected_functions, f_out)
 
@@ -121,6 +125,6 @@ dataset.reset_index(inplace=True, drop=True)
 print(dataset.shape)
 
 # Save to file
-dataset.to_csv("../../DBs/Dataset-Muaz/testing_Dataset-Muaz.csv")
+dataset.to_csv(args.output_testing_csv)
 
 file_pairs.close()

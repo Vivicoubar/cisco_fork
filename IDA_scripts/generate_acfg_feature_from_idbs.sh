@@ -20,7 +20,7 @@ python3 IDA_flowchart/cli_flowchart.py -i ../IDBs/Dataset-Muaz -o ../DBs/Dataset
 ## input: flowchart csv file
 ## output: testing_dataset.csv, features/selected_Dataset-Muaz.json, pairs/pairs_testing_Dataset-Muaz.csv
 echo "[*] Launching dataset_creation_notebooks/Dataset-Muaz_creation.py"
-python3 DBs_files_scripts/Dataset-Muaz_creation.py DBs_files_scripts/selected_pairs.csv
+python3 DBs_files_scripts/Dataset-Muaz_creation.py "DBs_files_scripts/selected_pairs.csv" "../DBs/Dataset-Muaz/features/flowchart_Dataset-Muaz.csv" "../DBs/Dataset-Muaz/pairs/pairs_testing_Dataset-Muaz.csv" "../DBs/Dataset-Muaz/features/selected_Dataset-Muaz.json" "../DBs/Dataset-Muaz/testing_Dataset-Muaz.csv"
 
 # compute acfg features
 ## input: selected_Dataset-Muaz.json

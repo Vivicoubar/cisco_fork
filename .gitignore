@@ -44,6 +44,7 @@ IDA_scripts/dataset_creation_notebooks/Dataset-Muaz_creation.nbconvert.ipynb
 IDA_scripts/**/*_log.txt
 IDA_scripts/**/*.nbconvert.*
 IDA_scripts/generate_idbs.py
+IDA_scripts/**/selected_pairs.csv
 
 Models/**/*checkpoint*
 Models/GGSNN-GMN/**/**dict_opc_*

@@ -155,7 +155,7 @@ def main(db1, db2, db3, dbvuln, test, muaz, adv):
     if muaz:
         no_action = False
         directory_walk(
-            join(BIN_FOLDER, 'Dataset-Muaz/bins/'),
+            join(BIN_FOLDER, 'Dataset-Muaz'),
             join(IDB_FOLDER, 'Dataset-Muaz'))
     if adv:
         no_action = False

@@ -14,7 +14,7 @@ docker run --rm -v $(pwd)/a2v_preprocessing_Dataset-Muaz-testing:/input \
 
 echo -e "\n *** Results saved in $(pwd)/asm2vec_inference_Dataset-Muaz-testing/embeddings.csv\n"
 echo "Converting results..."
-python3 Convert_Asm2vec_results.py
+python3 convert_asm2vec_results.py
 
 mkdir -p ../../Results/csv
 cp asm2vec_inference_Dataset-Muaz-testing/pairs_results_Dataset-Muaz_a2v.csv ../..//Results/csv/pairs_results_Dataset-Muaz_a2v.csv
