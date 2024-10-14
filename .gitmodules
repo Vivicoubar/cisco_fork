@@ -1,0 +1,3 @@
+[submodule "Models/jTrans"]
+	path = Models/jTrans
+	url = git@github.com:vul337/jTrans.git
