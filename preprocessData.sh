@@ -20,11 +20,11 @@ rm -r "$CISCO_DBS/*"
 cd $CISCO_SCRIPTS
 echo "Generating IDBs from the binaries..."
 echo "Generating IDBs from the binaries..." >> $LOG
-#if ! python3 generate_idbs.py --muaz; then # generates the IDBs
-#	echo "Error generate_idbs.py --muaz"
-#	echo "Error generate_idbs.py --muaz" >> $LOG
-#	exit 1
-#fi
+if ! python3 generate_idbs.py --muaz; then # generates the IDBs
+	echo "Error generate_idbs.py --muaz"
+	echo "Error generate_idbs.py --muaz" >> $LOG
+	exit 1
+fi
 if ! ./generate_acfg_feature_from_idbs.sh ; then
 	echo "Error generate_acfg_feature_from_idbs.sh"
 	echo "Error generate_acfg_feature_from_idbs.sh" >> $LOG
