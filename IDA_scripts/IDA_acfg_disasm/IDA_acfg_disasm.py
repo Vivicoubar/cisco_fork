@@ -41,7 +41,9 @@ import json
 import ntpath
 import os
 import time
+import sys
 
+print("Python version: {}".format(sys.version))
 from capstone import *
 from collections import namedtuple
 

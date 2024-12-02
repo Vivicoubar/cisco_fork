@@ -3,7 +3,9 @@ LOG="$2"
 OUT_DIR="$3"
 
 CISCO_MODELS=$(realpath "Models/")
-CISCO_RESULTS=$(realpath "Models/")
+CISCO_RESULTS=$(realpath "Results/")
+mkdir -p $CISCO_RESULTS/csv/
+rm -r $CISCO_RESULTS/csv/*
 
 if [ "$model" != "a2v" -a "$model" != "gmn"  -a "$model" != "all" ]; then
 	echo "error, "$model" model not recognized"
@@ -83,7 +85,7 @@ elif [ $model = "all" ]; then
 	echo "Done" >> $LOG
 
 	# copy the resulting csvs
-	if ! cp $CISCO_RESULTS/Results/csv/pairs_results_Dataset-Muaz_*.csv $OUT_DIR/; then
+	if ! cp $CISCO_RESULTS/csv/pairs_results_Dataset-Muaz_*.csv $OUT_DIR/; then
 		echo "error copying result csvs"
 		echo "error copying result csvs" >> $LOG
 		exit 1
