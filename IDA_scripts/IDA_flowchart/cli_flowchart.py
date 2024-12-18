@@ -56,7 +56,9 @@ LOG_PATH = "flowchart_log.txt"
               help="Path to the IDBs folder")
 @click.option("-o", "--output-csv", required=True,
               help="Path to the output CSV file")
-def main(idbs_folder, output_csv):
+@click.option("-n", "--n-bb-min", required=True,
+              help="Minimum number of basic block per function")
+def main(idbs_folder, output_csv, n_bb_min):
     """Call IDA_flowchart.py IDA script."""
     try:
         if not isfile(IDA_PATH):
@@ -90,9 +92,10 @@ def main(idbs_folder, output_csv):
                        '-A',
                        '-L{}'.format(LOG_PATH),
                        '-S{}'.format(IDA_PLUGIN),
-                       '-Oflowchart:{}:{}'.format(
+                       '-Oflowchart:{}:{}:{}'.format(
                            rel_idb_path,
-                           output_csv),
+                           output_csv,
+                           n_bb_min),
                        idb_path]
 
                 print("[D] cmd: {}".format(cmd))

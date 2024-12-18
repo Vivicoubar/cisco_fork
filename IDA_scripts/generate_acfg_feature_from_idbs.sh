@@ -4,6 +4,8 @@
 # put all your IDA-extracted (with /IDA_scripts/generate_idbs.py) databases in /IDBs/Dataset-Muaz/
 # create a Dbs/Dataset-Muaz folder
 # create features and pairs folders
+# $1: min number of bb per function
+N_BB_MIN=$1
 export IDA_PATH=$HOME/idapro-7.5/idat64
 rm -rf ../DBs/Dataset-Muaz
 mkdir -p ../DBs/Dataset-Muaz
@@ -14,7 +16,7 @@ mkdir -p ../DBs/Dataset-Muaz/pairs
 ## input: IDBs fodler
 ## output: csv file with selected functions data
 echo "[*] Launching IDA_flowchart/cli_flowchart.py"
-python3 IDA_flowchart/cli_flowchart.py -i ../IDBs/Dataset-Muaz -o ../DBs/Dataset-Muaz/features/flowchart_Dataset-Muaz.csv
+python3 IDA_flowchart/cli_flowchart.py -i ../IDBs/Dataset-Muaz -o ../DBs/Dataset-Muaz/features/flowchart_Dataset-Muaz.csv -n $N_BB_MIN
 
 # select pairs and functions
 ## input: flowchart csv file

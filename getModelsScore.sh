@@ -1,11 +1,13 @@
 model="$1"
-LOG="$2"
-OUT_DIR="$3"
+LOG=$(realpath "$2")
+OUT_DIR=$(realpath "$3")
 
 CISCO_MODELS=$(realpath "Models/")
 CISCO_RESULTS=$(realpath "Results/")
 mkdir -p $CISCO_RESULTS/csv/
 rm -r $CISCO_RESULTS/csv/*
+mkdir -p $OUT_DIR
+CWD=$(pwd)
 
 if [ "$model" != "a2v" -a "$model" != "gmn"  -a "$model" != "all" ]; then
 	echo "error, "$model" model not recognized"
@@ -37,7 +39,7 @@ elif [ "$model" = "a2v" ]; then
 		echo "Error running test script, no Dataset testing results created" >> $LOG
 		exit 1
 	fi
-	if ! cp $CISCO_RESULTS/Results/csv/pairs_results_Dataset-Muaz_a2v.csv $OUT_DIR/; then
+	if ! cp $CISCO_RESULTS/csv/pairs_results_Dataset-Muaz_a2v.csv $OUT_DIR/; then
 		echo "error copying result csv"
 		echo "error copying result csv" >> $LOG
 		exit 1
@@ -84,6 +86,18 @@ elif [ $model = "all" ]; then
 	fi
 	echo "Done" >> $LOG
 
+	cd $CISCO_MODELS/Zeek/
+	echo "Running gnn test_script in $(pwd)" >> $LOG
+	if ! ./test_script.sh; then
+		echo "Error running test script, no Dataset testing results created"
+		echo "Error running test script, no Dataset testing results created" >> $LOG
+		notif error "$0 $*" finished
+		exit 1
+	fi
+	echo "Done" >> $LOG
+
+	cd $CWD
+
 	# copy the resulting csvs
 	if ! cp $CISCO_RESULTS/csv/pairs_results_Dataset-Muaz_*.csv $OUT_DIR/; then
 		echo "error copying result csvs"
@@ -92,5 +106,5 @@ elif [ $model = "all" ]; then
 	fi
 fi
 
+echo "Done"
 echo "Done" >> $LOG
-cd -

@@ -5,6 +5,8 @@
 
 env
 
+**/*log*
+
 Models/GGSNN-GMN/Preprocessing/Dataset*
 Models/GGSNN-GMN/NeuralNetwork/Dataset*
 cisco_env

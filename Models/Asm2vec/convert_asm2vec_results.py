@@ -13,7 +13,7 @@ def cosine_similarity(e1, e2):
 
 def compute_cosine_similarity(df_input):
     sim_list = list()
-    for idx, row in tqdm(df_input.iterrows()):
+    for idx, row in tqdm(df_input.iterrows(), total=len(df_input)):
 
         if row['embeddings_1'] is np.nan or \
                 row['embeddings_2'] is np.nan:
