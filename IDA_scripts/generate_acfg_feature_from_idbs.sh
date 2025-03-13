@@ -7,7 +7,7 @@
 # $1: min number of bb per function
 N_BB_MIN=$1
 export IDA_PATH=$HOME/idapro-7.5/idat64
-rm -rf ../DBs/Dataset-Muaz
+rm -r ../DBs/Dataset-Muaz
 mkdir -p ../DBs/Dataset-Muaz
 mkdir -p ../DBs/Dataset-Muaz/features
 mkdir -p ../DBs/Dataset-Muaz/pairs
