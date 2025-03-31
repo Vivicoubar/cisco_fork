@@ -18,7 +18,7 @@ fi
 if [ "$model" = "gmn" ]; then
 	cd $CISCO_MODELS/GGSNN-GMN/
 	echo "Running gmn test_script in $(pwd)" >> $LOG
-	if ! ./test_script.sh gmn; then
+	if ! ./test_script.sh gmn_opc; then
 		cd -
 		echo "Error running test script, no Dataset testing results created"
 		echo "Error running test script, no Dataset testing results created" >> $LOG
@@ -77,8 +77,26 @@ elif [ $model = "all" ]; then
 	fi
 	echo "Done" >> $LOG
 
+	echo "Running gnn_opc test_script in $(pwd)" >> $LOG
+	if ! ./test_script.sh gnn_opc; then
+		echo "Error running test script, no Dataset testing results created"
+		echo "Error running test script, no Dataset testing results created" >> $LOG
+		notif error "$0 $*" finished
+		exit 1
+	fi
+	echo "Done" >> $LOG
+
 	echo "Running gmn test_script in $(pwd)" >> $LOG
 	if ! ./test_script.sh gmn; then
+		echo "Error running test script, no Dataset testing results created"
+		echo "Error running test script, no Dataset testing results created" >> $LOG
+		notif error "$0 $*" finished
+		exit 1
+	fi
+	echo "Done" >> $LOG
+
+	echo "Running gmn test_script in $(pwd)" >> $LOG
+	if ! ./test_script.sh gmn_opc; then
 		echo "Error running test script, no Dataset testing results created"
 		echo "Error running test script, no Dataset testing results created" >> $LOG
 		notif error "$0 $*" finished

@@ -4,7 +4,6 @@
 # Generate the similarity .csv files for each model based on:
 # -> the Dataset-Muaz binaries
 # -> the selected pairs file
-
 # Creates the idbs (slow), preprocesses the data (medium), run the models (medium)
 
 LOG=$(realpath "$1")

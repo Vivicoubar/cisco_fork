@@ -1,7 +1,3 @@
-set -e
-rm -f ../../Results/data/raw_results/Asm2vec/Dataset-Muaz_asm2vec_e10/*
-rm -f ../data/Dataset-Muaz/*
-
 docker run --rm -v $(pwd)/../../DBs/Dataset-Muaz/features/acfg_disasm:/input \
 								-v $(pwd)/a2v_preprocessing_Dataset-3-training:/training_data \
 								-v $(pwd):/output -it asm2vec /code/i2v_preprocessing.py \
