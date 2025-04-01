@@ -1,4 +1,4 @@
 [submodule "Models/jTrans"]
 	path = Models/jTrans
-	url = git@github.com:vul337/jTrans.git
+	url = git@github.com:GabSaug/jtrans_fork.git
 	ignore = dirty
