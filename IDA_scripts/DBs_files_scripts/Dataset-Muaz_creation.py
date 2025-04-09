@@ -14,6 +14,7 @@ parser.add_argument("flowchart_path")
 parser.add_argument("output_pairs_testing")
 parser.add_argument("output_selected_json")
 parser.add_argument("output_testing_csv")
+parser.add_argument("--n_bb", "-n", default=5, help="Min nb of bb for a function", type=int)
 args = parser.parse_args()
 
 
@@ -41,6 +42,7 @@ pairs=list()
 selected_pairs = pd.read_csv(file_pairs)
 print("Selected pairs df shape {}".format(selected_pairs.shape))
 skipped_funs = set()
+small_funs = set()
 
 for i, row in tqdm(selected_pairs.iterrows(), total=len(selected_pairs)):
     #index_1 = df.loc[ (df['idb_path'] == row["idb_path_1"]) & (df['func_name'] == row["func_name_1"])].index
@@ -48,17 +50,25 @@ for i, row in tqdm(selected_pairs.iterrows(), total=len(selected_pairs)):
     t1 = (row["idb_path_1"], row["func_name_1"])
     t2 = (row["idb_path_2"], row["func_name_2"])
     if t1 not in flowchart_dict.keys():
+        #print(f"{t1} skipped")
         skipped_funs.add(t1)
         continue
     elif t2 not in flowchart_dict.keys():
+        #print(f"{t2} skipped")
         skipped_funs.add(t2)
         continue
     index_1 = flowchart_dict[t1]
     index_2 = flowchart_dict[t2]
+    if flowchart_dict[t1]["bb_num"] < args.nb_bb:
+        small_funs.add(t1)
+        continue
+    if flowchart_dict[t2]["bb_num"] < args.nb_bb:
+        small_funs.add(t2)
+        continue
     pairs.append((index_1,index_2))
 
-print("Skipped functions: {}".format(len(skipped_funs)))
-
+print("Skipped functions pairs from selected_pairs.csv that do not appear in flowchart_dict : {}".format(len(skipped_funs)))
+print(f"Skipped {len(skipped_funs)} functions pairs from selected_pairs.csv that are too small (< {args.nb_bb} bb)")
 
 # **Create all pairs of all functions of interest**
 
@@ -96,18 +106,25 @@ testing.to_csv(args.output_pairs_testing)
 
 testing_functions = set([tuple(x) for x in testing[['idb_path_1', 'fva_1']].values])
 testing_functions |= set([tuple(x) for x in testing[['idb_path_2', 'fva_2']].values])
+
 print("Found {} unique functions".format(len(testing_functions)))
 
 selected_functions = defaultdict(list)
 for t in testing_functions:
     selected_functions[t[0]].append(int(t[1], 16))
 
+tot = 0
+for k,v in selected_functions.items():
+    tot += len(v)
+
+print("Coming from {} unique binaries".format(len(selected_functions.keys())))
+print("Total functions in output json: {} ".format(tot))
+
 # Test
 assert(sum([len(v) for v in selected_functions.values()]) == len(testing_functions))
 
 # Save to file
 with open(args.output_selected_json, "w+") as f_out:
-
     json.dump(selected_functions, f_out)
 
 # Save the "selected functions" to a CSV.

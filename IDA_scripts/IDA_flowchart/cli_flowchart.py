@@ -50,15 +50,32 @@ IDA_PLUGIN = join(dirname(abspath(__file__)), 'IDA_flowchart.py')
 REPO_PATH = dirname(dirname(dirname(abspath(__file__))))
 LOG_PATH = "flowchart_log.txt"
 
+from pathlib import Path
+
+# Load IDBs from selected_pairs
+def get_selected_idbs(selected_pairs_file):
+    selected_idbs = set()
+    with open(selected_pairs_file, 'r') as f:
+        for line in f:
+            if line.strip() == "":
+                continue
+            try:
+                b1, _, b2, _, *_ = line.replace(",", " ").split()
+                selected_idbs.add(Path(b1).as_posix())
+                selected_idbs.add(Path(b2).as_posix())
+            except ValueError:
+                continue
+    return selected_idbs
+
 
 @click.command()
 @click.option("-i", "--idbs-folder", required=True,
               help="Path to the IDBs folder")
 @click.option("-o", "--output-csv", required=True,
               help="Path to the output CSV file")
-@click.option("-n", "--n-bb-min", required=True,
-              help="Minimum number of basic block per function")
-def main(idbs_folder, output_csv, n_bb_min):
+@click.option("-s", "--selected-pairs", required=True,
+              help="Path to the selected_pairs file")
+def main(idbs_folder, output_csv, n_bb_min, selected_pairs):
     """Call IDA_flowchart.py IDA script."""
     try:
         if not isfile(IDA_PATH):
@@ -68,6 +85,8 @@ def main(idbs_folder, output_csv, n_bb_min):
 
         print("[D] IDBs folder: {}".format(idbs_folder))
         print("[D] Output CSV: {}".format(output_csv))
+
+        selected_idbs = get_selected_idbs(selected_pairs)
 
         success_cnt, error_cnt = 0, 0
         for root, _, files in walk(idbs_folder):
@@ -88,14 +107,17 @@ def main(idbs_folder, output_csv, n_bb_min):
                     join(getcwd(), root, f_name),  # absolute path if IDB
                     REPO_PATH)  # absolute path of the repo folder
 
+                if rel_idb_path not in selected_idbs:
+                    print(f"{rel_idb_path} not in selected pairs !")
+                    continue
+
                 cmd = [IDA_PATH,
                        '-A',
                        '-L{}'.format(LOG_PATH),
                        '-S{}'.format(IDA_PLUGIN),
                        '-Oflowchart:{}:{}:{}'.format(
                            rel_idb_path,
-                           output_csv,
-                           n_bb_min),
+                           output_csv)
                        idb_path]
 
                 print("[D] cmd: {}".format(cmd))

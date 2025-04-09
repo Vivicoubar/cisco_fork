@@ -154,11 +154,6 @@ def analyze_functions(idb_path, output_csv, n_bb_min):
             # Get the list of basic-block addresses
             bb_sa_list = list(idaapi.FlowChart(func))
 
-            # SKIP all the functions with less than n BBs.
-            if len(bb_sa_list) < int(n_bb_min):
-                print("Function {} is too small ({})!".format(func_name, len(bb_sa_list)))
-                continue
-
             data = [idb_path,
                     hex(fva).strip("L"),
                     func_name,
