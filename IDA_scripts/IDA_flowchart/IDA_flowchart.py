@@ -125,7 +125,7 @@ def get_function_hashopcodes(fva):
     return hashopcodes
 
 
-def analyze_functions(idb_path, output_csv, n_bb_min):
+def analyze_functions(idb_path, output_csv):
     """
     Extract summary information from each function in the binary.
 
@@ -183,13 +183,12 @@ if __name__ == "__main__":
         ida_pro.qexit(1)
 
     plugin_options = idaapi.get_plugin_options("flowchart").split(':')
-    if len(plugin_options) != 3:
-        print("[!] -Oflowchart:IDB_PATH:OUTPUT_CSV:N_BB_MIN is required")
+    if len(plugin_options) != 2:
+        print("[!] -Oflowchart:IDB_PATH:OUTPUT_CSV required")
         ida_pro.qexit(1)
 
     idb_path = plugin_options[0]
     output_csv = plugin_options[1]
-    n_bb_min = plugin_options[2]  # Minimal number of basic bocks per function
 
-    analyze_functions(idb_path, output_csv, n_bb_min)
+    analyze_functions(idb_path, output_csv)
     ida_pro.qexit(0)

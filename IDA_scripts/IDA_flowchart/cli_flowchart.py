@@ -75,7 +75,7 @@ def get_selected_idbs(selected_pairs_file):
               help="Path to the output CSV file")
 @click.option("-s", "--selected-pairs", required=True,
               help="Path to the selected_pairs file")
-def main(idbs_folder, output_csv, n_bb_min, selected_pairs):
+def main(idbs_folder, output_csv, selected_pairs):
     """Call IDA_flowchart.py IDA script."""
     try:
         if not isfile(IDA_PATH):
@@ -115,9 +115,9 @@ def main(idbs_folder, output_csv, n_bb_min, selected_pairs):
                        '-A',
                        '-L{}'.format(LOG_PATH),
                        '-S{}'.format(IDA_PLUGIN),
-                       '-Oflowchart:{}:{}:{}'.format(
+                       '-Oflowchart:{}:{}'.format(
                            rel_idb_path,
-                           output_csv)
+                           output_csv),
                        idb_path]
 
                 print("[D] cmd: {}".format(cmd))
