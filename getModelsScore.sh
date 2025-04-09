@@ -24,7 +24,7 @@ if [ "$model" = "gmn" ]; then
 		echo "Error running test script, no Dataset testing results created" >> $LOG
 		exit 1
 	fi
-	if ! cp $CISCO_RESULTS/csv/pairs_results_Dataset-Muaz_gmn.csv $OUT_DIR/; then
+	if ! cp $CISCO_RESULTS/csv/pairs_results_Dataset-Muaz_gmn_opc.csv $OUT_DIR/; then
 		cd -
 		echo "error copying result csv"
 		echo "error copying result csv" >> $LOG
@@ -68,26 +68,8 @@ elif [ $model = "all" ]; then
 	echo "Done" >> $LOG
 
 	cd $CISCO_MODELS/GGSNN-GMN/
-	echo "Running gnn test_script in $(pwd)" >> $LOG
-	if ! ./test_script.sh gnn; then
-		echo "Error running test script, no Dataset testing results created"
-		echo "Error running test script, no Dataset testing results created" >> $LOG
-		notif error "$0 $*" finished
-		exit 1
-	fi
-	echo "Done" >> $LOG
-
 	echo "Running gnn_opc test_script in $(pwd)" >> $LOG
 	if ! ./test_script.sh gnn_opc; then
-		echo "Error running test script, no Dataset testing results created"
-		echo "Error running test script, no Dataset testing results created" >> $LOG
-		notif error "$0 $*" finished
-		exit 1
-	fi
-	echo "Done" >> $LOG
-
-	echo "Running gmn test_script in $(pwd)" >> $LOG
-	if ! ./test_script.sh gmn; then
 		echo "Error running test script, no Dataset testing results created"
 		echo "Error running test script, no Dataset testing results created" >> $LOG
 		notif error "$0 $*" finished

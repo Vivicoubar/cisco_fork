@@ -105,6 +105,10 @@ def pack_batch(graphs, features, use_features, nofeatures_size=1):
         n_nodes = g.number_of_nodes()
         n_edges = g.number_of_edges()
 
+        if not isinstance(f, np.ndarray):
+            f = np.ones((n_nodes, nofeatures_size), dtype=np.float32)  # Default feature vector
+
+
         boo = f.shape[0] != len(np.ones(n_nodes, dtype=np.int32) * i)
 
         #Bug fix try

@@ -28,14 +28,16 @@ print(flowchart_file.shape)
 
 file_pairs = open(args.selected_pairs_path, 'r')
 
-selected_columns = ['idb_path', 'fva', 'func_name', 'hashopcodes']
+selected_columns = ['idb_path', 'fva', 'func_name', 'hashopcodes', 'bb_num']
 df = flowchart_file[selected_columns]
 df.reset_index(inplace=True)
 print("Flowchart selected columns df shape {}".format(df.shape))
 
 flowchart_dict = dict()  # used to make the pairs, fast
+flowchart_bb = dict()  # used to make the pairs, fast
 for i, row in tqdm(df.iterrows(), total=len(df)):
     flowchart_dict[(row["idb_path"], row["func_name"])] = i
+    flowchart_bb[(row["idb_path"], row["func_name"])] = row["bb_num"]
 df = df.drop('index', axis=1)
 
 pairs=list()
@@ -59,16 +61,16 @@ for i, row in tqdm(selected_pairs.iterrows(), total=len(selected_pairs)):
         continue
     index_1 = flowchart_dict[t1]
     index_2 = flowchart_dict[t2]
-    if flowchart_dict[t1]["bb_num"] < args.nb_bb:
+    if flowchart_bb[t1] < args.n_bb:
         small_funs.add(t1)
         continue
-    if flowchart_dict[t2]["bb_num"] < args.nb_bb:
+    if flowchart_bb[t2] < args.n_bb:
         small_funs.add(t2)
         continue
     pairs.append((index_1,index_2))
 
 print("Skipped functions pairs from selected_pairs.csv that do not appear in flowchart_dict : {}".format(len(skipped_funs)))
-print(f"Skipped {len(skipped_funs)} functions pairs from selected_pairs.csv that are too small (< {args.nb_bb} bb)")
+print(f"Skipped {len(small_funs)} functions pairs from selected_pairs.csv that are too small (< {args.n_bb} bb)")
 
 # **Create all pairs of all functions of interest**
 
