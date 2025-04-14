@@ -4,10 +4,11 @@ RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y git python3-pip
 
 RUN mkdir /code
-RUN git clone https://github.com/CUMLSec/trex /code/trex
+#RUN git clone https://github.com/CUMLSec/trex /code/trex
+COPY trex /code/trex
 
 WORKDIR /code/trex
-RUN git checkout 7b2cabaecdaeb043da48d85a9016fed391ea75a5
+#RUN git checkout 7b2cabaecdaeb043da48d85a9016fed391ea75a5
 RUN conda create -n trex python=3.8 scipy scikit-learn requests
 
 SHELL ["conda", "run", "-n", "trex", "/bin/bash", "-c"]
