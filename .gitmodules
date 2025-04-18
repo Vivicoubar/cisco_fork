@@ -5,3 +5,4 @@
 [submodule "Models/HermesSim"]
 	path = Models/HermesSim
 	url = git@github.com:GabSaug/hermesssim_fork.git
+	ignore = dirty
