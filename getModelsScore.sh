@@ -57,6 +57,16 @@ if ! ./test_script.sh; then
 fi
 echo "Done" >> $LOG
 
+cd $CISCO_MODELS/Trex/
+echo "Running Trex test_script in $(pwd)" >> $LOG
+if ! ./test_script.sh; then
+	echo "Error running test script, no Dataset testing results created"
+	echo "Error running test script, no Dataset testing results created" >> $LOG
+	notif error "$0 $*" finished
+	exit 1
+fi
+echo "Done" >> $LOG
+
 cd $CISCO_MODELS/jTrans/
 conda activate jtrans
 echo "Running jTrans test_script in $(pwd)" >> $LOG
@@ -79,16 +89,6 @@ if ! ./test_script.sh; then
 fi
 echo "Done" >> $LOG
 
-cd $CISCO_MODELS/Trex/
-conda activate jtrans
-echo "Running Trex test_script in $(pwd)" >> $LOG
-if ! ./test_script.sh; then
-	echo "Error running test script, no Dataset testing results created"
-	echo "Error running test script, no Dataset testing results created" >> $LOG
-	notif error "$0 $*" finished
-	exit 1
-fi
-echo "Done" >> $LOG
 
 cd $CWD
 

@@ -6,8 +6,8 @@
 # -> the selected pairs file
 # Creates the idbs (slow), preprocesses the data (medium), run the models (medium)
 
-LOG=$(realpath "$1")
-N_BB_MIN=$2
+N_BB_MIN=$1
+LOG=./preproc.log
 
 CISCO_IDBS=$(realpath "IDBs/Dataset-Muaz/")
 CISCO_DBS=$(realpath "DBs/Dataset-Muaz/")
